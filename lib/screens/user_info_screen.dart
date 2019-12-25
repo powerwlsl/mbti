@@ -12,45 +12,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   String age;
   String gender;
 
-  DropdownButton<String> mbtiTypePicker() {
-    return DropdownButton(
-      hint: new Text("MBTI type", textAlign: TextAlign.center),
-      items: dropdownListItem(Mbtis.Types),
-      value: mbtiType,
-      onChanged: (val) {
-        setState(() {
-          mbtiType = val;
-        });
-      },
-    );
-  }
-
-//  TODO: input field might be better
-  DropdownButton<String> agePicker() {
-    var ageRange = [for (var i = 1930; i < 2020; i += 1) i.toString()];
-    return DropdownButton(
-      items: dropdownListItem(ageRange),
-      hint: new Text("Age", textAlign: TextAlign.center),
-      value: age,
-      onChanged: (val) {
-        setState(() {
-          age = val;
-        });
-      },
-    );
-  }
-
-  DropdownButton<String> genderPicker() {
-    var genderList = ["MALE", "FEMALE"];
-    return DropdownButton(
-      items: dropdownListItem(genderList),
-      hint: new Text("Gender", textAlign: TextAlign.center),
-      value: gender,
-      onChanged: (val) {
-        gender = val;
-      },
-    );
-  }
+  List<String> genderList = ["MALE", "FEMALE"];
+  List<String> ageRangeList = [
+    for (var i = 1930; i < 2020; i += 1) i.toString()
+  ];
 
   List<DropdownMenuItem<String>> dropdownListItem(List<String> itemList) {
     return itemList
@@ -78,9 +43,38 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      mbtiTypePicker(),
-                      agePicker(),
-                      genderPicker(),
+                      UserInfoDropdownButton(
+                        dropdownItemList: Mbtis.Types,
+                        hintString: "MBTI types",
+                        value: mbtiType,
+                        onChangedCallback: (value) {
+                          setState(() {
+                            mbtiType = value;
+                          });
+                        },
+                      ),
+                      //  TODO: input field might be better
+                      UserInfoDropdownButton(
+                        dropdownItemList: ageRangeList,
+                        hintString: "Age",
+                        value: age,
+                        onChangedCallback: (value) {
+                          setState(() {
+                            age = value;
+                          });
+                        },
+                      ),
+
+                      UserInfoDropdownButton(
+                        dropdownItemList: genderList,
+                        hintString: "Gender",
+                        value: gender,
+                        onChangedCallback: (value) {
+                          setState(() {
+                            gender = value;
+                          });
+                        },
+                      ),
                     ],
                   )),
             ),
@@ -104,6 +98,37 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class UserInfoDropdownButton extends StatelessWidget {
+  final List<String> dropdownItemList;
+  final String hintString;
+  final String value;
+  final Function onChangedCallback;
+
+  UserInfoDropdownButton({
+    @required this.dropdownItemList,
+    @required this.hintString,
+    @required this.value,
+    @required this.onChangedCallback,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton(
+      items: dropdownItemList
+          .map((value) => DropdownMenuItem(
+                child: Center(child: Text(value)),
+                value: value,
+              ))
+          .toList(),
+      hint: new Text(hintString, textAlign: TextAlign.center),
+      value: value,
+      onChanged: (selectedVal) {
+        onChangedCallback(selectedVal);
+      },
     );
   }
 }
