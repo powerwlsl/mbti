@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mbti/models/mbtis.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserInfoScreen extends StatefulWidget {
+  final SharedPreferences prefs;
+  UserInfoScreen({this.prefs});
+
   @override
   _UserInfoScreenState createState() => _UserInfoScreenState();
 }
@@ -85,8 +89,13 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               padding: EdgeInsets.all(20),
               child: RaisedButton(
                 padding: EdgeInsets.all(20),
-                child: Text("Done"),
-                onPressed: () {
+                child: Text("Next"),
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  prefs.setString('mbtiType', mbtiType);
+                  prefs.setString('age', age);
+                  prefs.setString('gender', gender);
+
                   Navigator.pushReplacementNamed(context, '/main');
                 },
                 color: Colors.blue,

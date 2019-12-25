@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScreen extends StatelessWidget {
+  final SharedPreferences prefs;
+  MainScreen({this.prefs});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
