@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mbti/widgets/custom_dropdown_button.dart';
+import 'package:mbti/constants.dart';
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -12,6 +14,7 @@ class UserInfoScreen extends StatefulWidget {
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
+//  TODO: set initial values
   String mbtiType;
   String age;
   String gender;
@@ -34,7 +37,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("MBTI"),
+        title: Text("My MBTI"),
       ),
       body: Center(
         child: Column(
@@ -47,7 +50,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      UserInfoDropdownButton(
+                      CustomDropdownButton(
                         dropdownItemList: Mbtis.Types,
                         hintString: "MBTI types",
                         value: mbtiType,
@@ -58,7 +61,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         },
                       ),
                       //  TODO: input field might be better
-                      UserInfoDropdownButton(
+                      CustomDropdownButton(
                         dropdownItemList: ageRangeList,
                         hintString: "Age",
                         value: age,
@@ -69,7 +72,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         },
                       ),
 
-                      UserInfoDropdownButton(
+                      CustomDropdownButton(
                         dropdownItemList: genderList,
                         hintString: "Gender",
                         value: gender,
@@ -88,8 +91,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               ),
               padding: EdgeInsets.all(20),
               child: RaisedButton(
-                padding: EdgeInsets.all(20),
-                child: Text("Next"),
                 onPressed: () async {
                   final prefs = await SharedPreferences.getInstance();
                   prefs.setString('mbtiType', mbtiType);
@@ -102,42 +103,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 colorBrightness: Brightness.dark,
                 disabledColor: Colors.blueGrey,
                 highlightColor: Colors.blueAccent,
+                child: Text("Done"),
               ),
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class UserInfoDropdownButton extends StatelessWidget {
-  final List<String> dropdownItemList;
-  final String hintString;
-  final String value;
-  final Function onChangedCallback;
-
-  UserInfoDropdownButton({
-    @required this.dropdownItemList,
-    @required this.hintString,
-    @required this.value,
-    @required this.onChangedCallback,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton(
-      items: dropdownItemList
-          .map((value) => DropdownMenuItem(
-                child: Center(child: Text(value)),
-                value: value,
-              ))
-          .toList(),
-      hint: new Text(hintString, textAlign: TextAlign.center),
-      value: value,
-      onChanged: (selectedVal) {
-        onChangedCallback(selectedVal);
-      },
     );
   }
 }

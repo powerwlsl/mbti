@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mbti/widgets/app_drawer.dart';
 
 class MbtiListScreen extends StatefulWidget {
   @override
@@ -27,7 +28,9 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
   ];
 
   Widget build(BuildContext context) {
-//   TODO: foldable list
+//   TODO: List with two column, go to type detail page upon click
+//  TODO: Group by mbti group
+
     return Scaffold(
       appBar: AppBar(
         title: Text("MBTI 리스트"),
@@ -61,6 +64,7 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
           ),
         ),
       ),
+      drawer: AppDrawer(),
     );
   }
 }

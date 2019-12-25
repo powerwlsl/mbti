@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       home: _decideHomePage(),
       routes: {
 //        TODO: login page
-
+        '/user_info': (context) => UserInfoScreen(),
         '/main': (context) => MainScreen(),
         '/mbtis': (context) => MbtiListScreen(),
         '/mbti_matching': (context) => MbtiMatchingScreen(),

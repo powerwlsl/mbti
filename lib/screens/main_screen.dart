@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mbti/widgets/app_drawer.dart';
 
 class MainScreen extends StatelessWidget {
   final SharedPreferences prefs;
@@ -9,10 +10,6 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("MBTI"),
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {},
-        ),
       ),
       body: Column(
         children: <Widget>[
@@ -79,6 +76,7 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
+      drawer: AppDrawer(),
     );
   }
 }
