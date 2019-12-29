@@ -31,10 +31,10 @@ class MyApp extends StatelessWidget {
       home: _decideHomePage(),
       routes: {
 //        TODO: login page
-        '/user_info': (context) => UserInfoScreen(),
-        '/main': (context) => MainScreen(),
+        '/user_info': (context) => UserInfoScreen(prefs: prefs),
+        '/main': (context) => MainScreen(prefs: prefs),
         '/mbtis': (context) => MbtiListScreen(),
-        '/mbti_matching': (context) => MbtiMatchingScreen(),
+        '/mbti_matching': (context) => MbtiMatchingScreen(prefs: prefs),
       },
     );
   }

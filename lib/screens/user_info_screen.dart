@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mbti/widgets/custom_dropdown_button.dart';
-import 'package:mbti/constants.dart';
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -31,6 +30,14 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               value: value,
             ))
         .toList();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    mbtiType = widget.prefs.getString('mbtiType');
+    age = widget.prefs.getString('age');
+    gender = widget.prefs.getString('gender');
   }
 
   @override
@@ -96,14 +103,14 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   prefs.setString('mbtiType', mbtiType);
                   prefs.setString('age', age);
                   prefs.setString('gender', gender);
-
+//TODO: instead of navigating to the main screen, show flash message and stay here
                   Navigator.pushReplacementNamed(context, '/main');
                 },
                 color: Colors.blue,
                 colorBrightness: Brightness.dark,
                 disabledColor: Colors.blueGrey,
                 highlightColor: Colors.blueAccent,
-                child: Text("Done"),
+                child: Text("Save"),
               ),
             )
           ],

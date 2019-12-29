@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mbti/widgets/app_drawer.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
   final SharedPreferences prefs;
   MainScreen({this.prefs});
+
   @override
   Widget build(BuildContext context) {
+    String myMbti = prefs.getString('mbtiType');
     return Scaffold(
       appBar: AppBar(
         title: Text("MBTI"),
@@ -15,7 +18,7 @@ class MainScreen extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
-              child: Text("나의 MBTI: INFP"),
+              child: Text("나의 MBTI: $myMbti"),
             ),
           ),
           Expanded(
