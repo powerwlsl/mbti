@@ -4,6 +4,7 @@ import 'package:mbti/screens/main_screen.dart';
 import 'package:mbti/screens/mbti_list_screen.dart';
 import 'package:mbti/screens/mbti_matching_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mbti/screens/mbti_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         '/main': (context) => MainScreen(prefs: prefs),
         '/mbtis': (context) => MbtiListScreen(),
         '/mbti_matching': (context) => MbtiMatchingScreen(prefs: prefs),
+        '/mbti': (context) => MbtiScreen(null),
       },
     );
   }
