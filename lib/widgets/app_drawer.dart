@@ -30,14 +30,6 @@ class AppDrawer extends StatelessWidget {
                 Navigator.of(context).pushReplacementNamed('/mbti_matching');
               },
             ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-              onTap: () {
-                Navigator.of(context).popAndPushNamed('/user_info');
-              },
-            ),
           ],
         ),
       ),

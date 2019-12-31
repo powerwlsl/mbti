@@ -22,6 +22,15 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("MBTI matching rate"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            color: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/user_info');
+            },
+          )
+        ],
       ),
       body: Center(
         child: Container(

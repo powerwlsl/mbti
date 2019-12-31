@@ -89,33 +89,44 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           });
                         },
                       ),
+                      SaveButton(mbtiType: mbtiType, age: age, gender: gender)
                     ],
                   )),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(
-                vertical: 20,
-              ),
-              padding: EdgeInsets.all(20),
-              child: RaisedButton(
-                onPressed: () async {
-                  final prefs = await SharedPreferences.getInstance();
-                  prefs.setString('mbtiType', mbtiType);
-                  prefs.setString('age', age);
-                  prefs.setString('gender', gender);
-//TODO: instead of navigating to the main screen, show flash message and stay here
-                  Navigator.pushReplacementNamed(context, '/main');
-                },
-                color: Colors.blue,
-                colorBrightness: Brightness.dark,
-                disabledColor: Colors.blueGrey,
-                highlightColor: Colors.blueAccent,
-                child: Text("Save"),
-              ),
-            )
           ],
         ),
       ),
+    );
+  }
+}
+
+class SaveButton extends StatelessWidget {
+  SaveButton({this.gender, this.age, this.mbtiType});
+
+  final String mbtiType;
+  final String age;
+  final String gender;
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      onPressed: () async {
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString('mbtiType', mbtiType);
+        prefs.setString('age', age);
+        prefs.setString('gender', gender);
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Saved!"),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      },
+      color: Colors.blue,
+      colorBrightness: Brightness.dark,
+      disabledColor: Colors.blueGrey,
+      highlightColor: Colors.blueAccent,
+      child: Text("Save"),
     );
   }
 }

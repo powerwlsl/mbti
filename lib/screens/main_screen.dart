@@ -13,6 +13,15 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("MBTI"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            color: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/user_info');
+            },
+          )
+        ],
       ),
       body: Column(
         children: <Widget>[

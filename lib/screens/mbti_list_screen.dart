@@ -18,6 +18,15 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("MBTI 리스트"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            color: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/user_info');
+            },
+          )
+        ],
       ),
       body: GridView.builder(
         itemCount: Mbtis.Types.length,
