@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:mbti/widgets/app_drawer.dart';
 import 'package:mbti/models/mbtis.dart';
+import 'package:mbti/screens/mbti_screen.dart';
 
 class MbtiListScreen extends StatefulWidget {
   @override
@@ -12,7 +13,6 @@ class MbtiListScreen extends StatefulWidget {
 class _MbtiListScreenState extends State<MbtiListScreen> {
   @override
   Widget build(BuildContext context) {
-//   TODO: List with two column, go to type detail page upon click
 //  TODO: Group by mbti group
 
     return Scaffold(
@@ -55,7 +55,7 @@ class MbtiGridListItem extends StatelessWidget {
           context,
           '/mbti',
 //          TODO: idk how to pass argument
-          arguments: type,
+          arguments: MbtiScreen(type),
         );
       },
       child: Container(

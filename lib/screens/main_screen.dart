@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mbti/widgets/app_drawer.dart';
-import 'package:provider/provider.dart';
+import 'package:mbti/constants.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   final SharedPreferences prefs;
   MainScreen({this.prefs});
 
   @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  @override
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   Widget build(BuildContext context) {
-    String myMbti = prefs.getString('mbtiType');
+    String myMbti = widget.prefs.getString('mbtiType');
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Text("MBTI"),
+        title: Text("My MBTI"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings),
@@ -25,13 +39,48 @@ class MainScreen extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(
-            child: Container(
-              child: Text("나의 MBTI: $myMbti"),
+          Container(
+            padding: EdgeInsets.all(20),
+            margin: EdgeInsets.only(top: 20, bottom: 10, right: 20, left: 20),
+            decoration: kRoundedBoxDecoration,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "My MBTI",
+                        style: kSecondaryTextStyle,
+                      ),
+                      Text(
+                        myMbti,
+                        style: kPrimaryTextStyle,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "창의적이며 항상 웃을 거리를 찾아다니는 활발한 성격으로 사람들과 자유롭게 어울리기를 좋아하는 넘치는 열정의 소유자.",
+                        style: kPrimarySmallTextStyle,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          Expanded(
+          Container(
+            padding: EdgeInsets.all(20),
+            margin: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
+            decoration: kRoundedBoxDecoration,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text("- 실증을 빨리 느낌"),
                 Text("- 오래 못함"),
@@ -40,8 +89,12 @@ class MainScreen extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
+          Container(
+            padding: EdgeInsets.all(20),
+            margin: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
+            decoration: kRoundedBoxDecoration,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
                   child: Text("INFP와 잘 맞는 MBTI 타입: ENFP, ESTJ"),
@@ -55,36 +108,71 @@ class MainScreen extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                FlatButton(
-                  padding: EdgeInsets.all(20),
-                  child: Column(
-                    children: <Widget>[
-                      Center(child: Icon(Icons.list)),
-                      Text("MBTI 유형별 특징"),
-                    ],
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  margin:
+                      EdgeInsets.only(top: 10, bottom: 20, right: 10, left: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color(0xFF239782),
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/mbtis');
-                  },
-                ),
-                FlatButton(
-                  padding: EdgeInsets.all(20),
-                  child: Column(
-                    children: <Widget>[
-                      Center(child: Icon(Icons.pie_chart)),
-                      Text("MBTI 간 매칭률 보기"),
-                    ],
+                  child: FlatButton(
+                    child: Column(
+                      children: <Widget>[
+                        Icon(
+                          Icons.list,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "MBTI 유형별 특징",
+                          style: kLightTextStyle,
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/mbtis');
+                    },
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/mbti_matching');
-                  },
                 ),
-              ],
-            ),
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  margin:
+                      EdgeInsets.only(top: 10, bottom: 20, right: 20, left: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color(0xFF12141A),
+                  ),
+                  child: FlatButton(
+                    child: Column(
+                      children: <Widget>[
+                        Icon(
+                          Icons.pie_chart,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "MBTI 매칭률",
+                          style: kLightTextStyle,
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/mbti_matching');
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

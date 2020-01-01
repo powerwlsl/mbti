@@ -11,9 +11,10 @@ class MbtiScreen extends StatefulWidget {
 class _MbtiScreenState extends State<MbtiScreen> {
   @override
   Widget build(BuildContext context) {
+    final MbtiScreen args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text("sth ${widget.type}"),
+        title: Text(args.type),
       ),
       body: Container(),
     );
