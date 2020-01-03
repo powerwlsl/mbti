@@ -20,6 +20,12 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
 
   Widget build(BuildContext context) {
     List mbtiTypesList = Mbtis.Types.keys.toList();
+    void setResult() {
+      setState(() {
+        _result = "Good";
+      });
+    }
+
     return Scaffold(
       body: Center(
         child: Container(
@@ -48,17 +54,9 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                   });
                 },
               ),
-              RaisedButton(
-                onPressed: () {
-                  setState(() {
-                    _result = "Good";
-                  });
-                },
-                color: Colors.blue,
-                colorBrightness: Brightness.dark,
-                disabledColor: Colors.blueGrey,
-                highlightColor: Colors.blueAccent,
-                child: Text("See result"),
+              CustomPrimaryFlatButton(
+                setResult,
+                "See Result",
               ),
               if (_result != null)
                 Container(
@@ -68,6 +66,27 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomPrimaryFlatButton extends StatelessWidget {
+  final Function onPressed;
+  final String title;
+  CustomPrimaryFlatButton(this.onPressed, this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      onPressed: onPressed,
+      padding: EdgeInsets.symmetric(vertical: 15),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 15,
+        ),
+      ),
+      color: Theme.of(context).accentColor,
     );
   }
 }

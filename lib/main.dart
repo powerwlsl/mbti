@@ -27,6 +27,14 @@ class MyApp extends StatelessWidget {
         iconTheme: IconThemeData(
           color: Colors.white,
         ),
+        buttonTheme: ButtonThemeData(
+          buttonColor:
+              Color(0xffff914d), // Background color (orange in my case).
+          textTheme: ButtonTextTheme.accent,
+          colorScheme: Theme.of(context)
+              .colorScheme
+              .copyWith(secondary: Colors.white), // Text color
+        ),
       ),
       home: _decideHomePage(),
     );
