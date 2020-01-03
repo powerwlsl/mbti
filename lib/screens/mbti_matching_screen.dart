@@ -20,18 +20,6 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("MBTI matching rate"),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.settings),
-            color: Colors.white,
-            onPressed: () {
-              Navigator.of(context).pushNamed('/user_info');
-            },
-          )
-        ],
-      ),
       body: Center(
         child: Container(
           padding: EdgeInsets.all(20),
@@ -79,7 +67,6 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
           ),
         ),
       ),
-      drawer: AppDrawer(),
     );
   }
 }
