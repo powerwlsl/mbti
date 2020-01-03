@@ -22,8 +22,20 @@ const kSecondaryTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const kSecondarySmallTextStyle = TextStyle(
+  fontSize: 12,
+  color: Colors.grey,
+  fontWeight: FontWeight.bold,
+);
+
 const kPrimaryTextStyle = TextStyle(
   fontSize: 30,
+  color: Colors.black87,
+  fontWeight: FontWeight.bold,
+);
+
+const kPrimaryMediumTextStyle = TextStyle(
+  fontSize: 25,
   color: Colors.black87,
   fontWeight: FontWeight.bold,
 );
@@ -36,6 +48,13 @@ const kPrimarySmallTextStyle = TextStyle(
 var kRoundedBoxDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(20),
   color: Colors.white,
+  boxShadow: [
+    BoxShadow(
+      color: Colors.black26,
+      offset: Offset(0.5, 3.0),
+      blurRadius: 10.0,
+    ),
+  ],
 );
 
 const kLightTextStyle = TextStyle(

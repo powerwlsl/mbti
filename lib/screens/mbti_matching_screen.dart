@@ -19,6 +19,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
   String _result;
 
   Widget build(BuildContext context) {
+    List mbtiTypesList = Mbtis.Types.keys.toList();
     return Scaffold(
       body: Center(
         child: Container(
@@ -28,7 +29,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               CustomDropdownButton(
-                dropdownItemList: Mbtis.Types,
+                dropdownItemList: mbtiTypesList,
                 hintString: "My MBTI types",
                 value: widget.prefs.getString('mbtiType'),
                 onChangedCallback: (value) {
@@ -38,7 +39,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                 },
               ),
               CustomDropdownButton(
-                dropdownItemList: Mbtis.Types,
+                dropdownItemList: mbtiTypesList,
                 hintString: "MBTI types",
                 value: mbti_2,
                 onChangedCallback: (value) {

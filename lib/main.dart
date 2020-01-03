@@ -5,7 +5,6 @@ import 'package:mbti/screens/main_screen.dart';
 import 'package:mbti/screens/mbti_list_screen.dart';
 import 'package:mbti/screens/mbti_matching_screen.dart';
 import 'package:mbti/screens/user_info_screen.dart';
-import 'package:mbti/screens/mbti_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

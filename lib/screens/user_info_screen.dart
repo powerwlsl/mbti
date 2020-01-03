@@ -55,7 +55,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       CustomDropdownButton(
-                        dropdownItemList: Mbtis.Types,
+                        dropdownItemList: Mbtis.Types.keys.toList(),
                         hintString: "MBTI types",
                         value: mbtiType,
                         onChangedCallback: (value) {

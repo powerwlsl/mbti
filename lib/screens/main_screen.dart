@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mbti/constants.dart';
+import 'package:mbti/models/mbtis.dart';
 
 class MainScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -25,7 +26,6 @@ class _MainScreenState extends State<MainScreen> {
             children: <Widget>[
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       "My MBTI",
@@ -33,7 +33,9 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     Text(
                       myMbti,
-                      style: kPrimaryTextStyle,
+                      style: kPrimaryTextStyle.copyWith(
+                        color: Color(Mbtis.Types[myMbti]["color"]),
+                      ),
                     ),
                   ],
                 ),

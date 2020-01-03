@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:mbti/widgets/app_drawer.dart';
+import 'package:mbti/constants.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:mbti/screens/mbti_screen.dart';
 
@@ -17,12 +17,13 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
 
     return Scaffold(
       body: GridView.builder(
-        itemCount: Mbtis.TypesGroupBy.length,
+        itemCount: Mbtis.Types.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10),
+          crossAxisCount: 4,
+          childAspectRatio: 4 / 5,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
         itemBuilder: (context, i) => MbtiGridListItem(i),
       ),
     );
@@ -35,10 +36,10 @@ class MbtiGridListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(Mbtis.TypesGroupBy);
-    final String type = Mbtis.Types[index];
+    final String type = Mbtis.Types.keys.toList()[index];
 
     return FlatButton(
+      padding: EdgeInsets.all(5),
       onPressed: () {
         Navigator.push(
           context,
@@ -46,22 +47,30 @@ class MbtiGridListItem extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.all(5),
+        margin: EdgeInsets.symmetric(vertical: 10),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset(
-              'images/$type.png',
-              height: 80,
+            Icon(
+//              TODO add proper icons
+              Icons.apps,
+              color: Color(Mbtis.Types[type]["color"]),
             ),
-            SizedBox(
-              height: 10,
+            Center(
+              child: Text(
+                type,
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Color(Mbtis.Types[type]["color"]),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            Text(
-              type,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+            Center(
+              child: Text(
+                Mbtis.Types[type]["character"],
+                style: kSecondarySmallTextStyle,
               ),
             ),
           ],
