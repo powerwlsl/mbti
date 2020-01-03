@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.cyan,
       ),
       home: _decideHomePage(),
     );
@@ -49,16 +49,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentPage = 0;
-
   GlobalKey bottomNavigationKey = GlobalKey();
   SharedPreferences prefs;
+
   @override
   Widget build(BuildContext context) {
     prefs = widget.prefs;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Fancy Bottom Navigation"),
+        title: Text(
+          _getTitle(currentPage),
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.cyan,
+        elevation: 0.0,
       ),
       body: Container(
         decoration: BoxDecoration(color: Colors.white),
@@ -69,22 +74,21 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: FancyBottomNavigation(
         tabs: [
           TabData(
-              iconData: Icons.home,
-              title: "Home",
-              onclick: () {
-                final FancyBottomNavigationState fState =
-                    bottomNavigationKey.currentState;
-                fState.setPage(2);
-              }),
+            iconData: Icons.home,
+            title: "Home",
+          ),
           TabData(
-              iconData: Icons.apps,
-              title: "Mbti List",
-              onclick: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MainScreen()))),
+            iconData: Icons.apps,
+            title: "Mbti List",
+          ),
           TabData(
             iconData: Icons.pie_chart,
-            title: "Mbti Matching",
-          )
+            title: "Matching",
+          ),
+          TabData(
+            iconData: Icons.settings,
+            title: "Settings",
+          ),
         ],
         initialSelection: 1,
         key: bottomNavigationKey,
@@ -100,15 +104,26 @@ class _MyHomePageState extends State<MyHomePage> {
   _getPage(int page) {
     switch (page) {
       case 0:
-        return MainScreen(
-          prefs: prefs,
-        );
+        return MainScreen(prefs: prefs);
       case 1:
         return MbtiListScreen();
+      case 2:
+        return MbtiMatchingScreen(prefs: prefs);
       default:
-        return MbtiMatchingScreen(
-          prefs: prefs,
-        );
+        return UserInfoScreen(prefs: prefs);
+    }
+  }
+
+  _getTitle(int page) {
+    switch (page) {
+      case 0:
+        return "My Mbti";
+      case 1:
+        return "Mbti List";
+      case 2:
+        return "Mbti Match";
+      default:
+        return "Settings";
     }
   }
 }

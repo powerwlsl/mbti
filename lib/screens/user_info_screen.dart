@@ -43,9 +43,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("My MBTI"),
-      ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
