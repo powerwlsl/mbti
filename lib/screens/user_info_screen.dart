@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mbti/widgets/custom_dropdown_button.dart';
+import 'package:mbti/widgets/custom_primary_flat_button.dart';
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -30,6 +31,19 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               value: value,
             ))
         .toList();
+  }
+
+  void onPressed() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('mbtiType', mbtiType);
+    prefs.setString('age', age);
+    prefs.setString('gender', gender);
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        content: Text("Saved!"),
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
 
   @override
@@ -86,44 +100,14 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           });
                         },
                       ),
-                      SaveButton(mbtiType: mbtiType, age: age, gender: gender)
+
+                      CustomPrimaryFlatButton(onPressed, "Save")
                     ],
                   )),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class SaveButton extends StatelessWidget {
-  SaveButton({this.gender, this.age, this.mbtiType});
-
-  final String mbtiType;
-  final String age;
-  final String gender;
-
-  @override
-  Widget build(BuildContext context) {
-    return RaisedButton(
-      onPressed: () async {
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setString('mbtiType', mbtiType);
-        prefs.setString('age', age);
-        prefs.setString('gender', gender);
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text("Saved!"),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      },
-      color: Colors.blue,
-      colorBrightness: Brightness.dark,
-      disabledColor: Colors.blueGrey,
-      highlightColor: Colors.blueAccent,
-      child: Text("Save"),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mbti/widgets/app_drawer.dart';
+import 'package:mbti/widgets/custom_primary_flat_button.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:mbti/widgets/custom_dropdown_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -66,27 +66,6 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class CustomPrimaryFlatButton extends StatelessWidget {
-  final Function onPressed;
-  final String title;
-  CustomPrimaryFlatButton(this.onPressed, this.title);
-
-  @override
-  Widget build(BuildContext context) {
-    return FlatButton(
-      onPressed: onPressed,
-      padding: EdgeInsets.symmetric(vertical: 15),
-      child: Text(
-        title,
-        style: TextStyle(
-          fontSize: 15,
-        ),
-      ),
-      color: Theme.of(context).accentColor,
     );
   }
 }
