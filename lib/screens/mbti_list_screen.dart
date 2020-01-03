@@ -38,11 +38,9 @@ class MbtiGridListItem extends StatelessWidget {
 
     return FlatButton(
       onPressed: () {
-        Navigator.pushNamed(
+        Navigator.push(
           context,
-          '/mbti',
-//          TODO: idk how to pass argument
-          arguments: MbtiScreen(type),
+          MaterialPageRoute(builder: (context) => MbtiScreen(type)),
         );
       },
       child: Container(
