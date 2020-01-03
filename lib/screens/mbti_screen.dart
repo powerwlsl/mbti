@@ -13,7 +13,15 @@ class _MbtiScreenState extends State<MbtiScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.type),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        title: Text(
+          widget.type,
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Container(),
     );

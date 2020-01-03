@@ -17,7 +17,7 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
 
     return Scaffold(
       body: GridView.builder(
-        itemCount: Mbtis.Types.length,
+        itemCount: Mbtis.TypesGroupBy.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 3 / 2,
@@ -32,8 +32,10 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
 class MbtiGridListItem extends StatelessWidget {
   final int index;
   MbtiGridListItem(this.index);
+
   @override
   Widget build(BuildContext context) {
+    print(Mbtis.TypesGroupBy);
     final String type = Mbtis.Types[index];
 
     return FlatButton(
