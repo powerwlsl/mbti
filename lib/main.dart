@@ -22,24 +22,26 @@ class MyApp extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.cyan,
-        iconTheme: IconThemeData(
-          color: Colors.white,
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.cyan,
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+          buttonTheme: ButtonThemeData(
+            buttonColor:
+                Color(0xffff914d), // Background color (orange in my case).
+            textTheme: ButtonTextTheme.accent,
+            colorScheme: Theme.of(context)
+                .colorScheme
+                .copyWith(secondary: Colors.white), // Text color
+          ),
         ),
-        buttonTheme: ButtonThemeData(
-          buttonColor:
-              Color(0xffff914d), // Background color (orange in my case).
-          textTheme: ButtonTextTheme.accent,
-          colorScheme: Theme.of(context)
-              .colorScheme
-              .copyWith(secondary: Colors.white), // Text color
-        ),
-      ),
-      home: _decideHomePage(),
-    );
+        home: _decideHomePage(),
+        routes: {
+          '/home': (context) => MyHomePage(prefs: prefs),
+        });
   }
 
   _decideHomePage() {

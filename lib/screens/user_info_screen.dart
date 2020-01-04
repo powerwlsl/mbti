@@ -4,10 +4,16 @@ import 'package:mbti/models/mbtis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mbti/widgets/custom_dropdown_button.dart';
 import 'package:mbti/widgets/custom_primary_flat_button.dart';
+import 'package:mbti/main.dart';
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
-  UserInfoScreen({this.prefs});
+  final bool isLandingPage;
+
+  UserInfoScreen({
+    this.prefs,
+    this.isLandingPage = false,
+  });
 
   @override
   _UserInfoScreenState createState() => _UserInfoScreenState();
@@ -38,12 +44,22 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     prefs.setString('mbtiType', mbtiType);
     prefs.setString('age', age);
     prefs.setString('gender', gender);
-    Scaffold.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Saved!"),
-        duration: Duration(seconds: 2),
-      ),
-    );
+    if (widget.isLandingPage) {
+      Navigator.pushReplacementNamed(
+        context,
+        '/home',
+        arguments: MyHomePage(
+          prefs: prefs,
+        ),
+      );
+    } else {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Saved!"),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
   }
 
   @override

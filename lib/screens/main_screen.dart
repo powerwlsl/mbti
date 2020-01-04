@@ -19,60 +19,62 @@ class _MainScreenState extends State<MainScreen> {
     String myMbtiType = widget.prefs.getString('mbtiType');
     Map myMbti = Mbtis.Types[myMbtiType];
 
-    return Column(
-      children: <Widget>[
-        Container(
-          child: Card(
-            elevation: 3,
-            margin: EdgeInsets.all(20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                ListTile(
-                  contentPadding: EdgeInsets.all(20),
-                  leading: Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          "My MBTI",
-                          style: kSecondaryTextStyle,
-                        ),
-                        Text(
-                          myMbtiType,
-                          style: kPrimaryTextStyle.copyWith(
-                            color: Color(myMbti["color"]),
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Container(
+            child: Card(
+              elevation: 3,
+              margin: EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ListTile(
+                    contentPadding: EdgeInsets.all(20),
+                    leading: Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "My MBTI",
+                            style: kSecondaryTextStyle,
                           ),
-                        ),
-                      ],
+                          Text(
+                            myMbtiType,
+                            style: kPrimaryTextStyle.copyWith(
+                              color: Color(myMbti["color"]),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      myMbti["character"],
+                    title: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        myMbti["character"],
+                      ),
                     ),
+                    subtitle: Text(myMbti["summary"]),
                   ),
-                  subtitle: Text(myMbti["summary"]),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        Column(
-          children: <Widget>[],
-        ),
-        Container(
-          width: double.infinity,
-          margin: EdgeInsets.only(right: 20, left: 20, bottom: 0, top: 30),
-          child: Text(
-            "${myMbti["type"]} $myMbtiType 특징",
-//            textAlign: TextAlign.center,
-            style: kPrimaryMediumTextStyle.copyWith(color: Color(0xFF305675)),
+          Column(
+            children: <Widget>[],
           ),
-        ),
-        Expanded(child: DetailListView(myMbti: myMbti)),
-      ],
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(right: 20, left: 20, bottom: 0, top: 30),
+            child: Text(
+              "${myMbti["type"]} $myMbtiType 특징",
+//            textAlign: TextAlign.center,
+              style: kPrimaryMediumTextStyle.copyWith(color: Color(0xFF305675)),
+            ),
+          ),
+          Expanded(child: DetailListView(myMbti: myMbti)),
+        ],
+      ),
     );
   }
 }

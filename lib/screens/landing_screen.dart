@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mbti/screens/user_info_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mbti/constants.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -25,6 +24,7 @@ class _LandingScreenState extends State<LandingScreen> {
             height: 300,
             child: UserInfoScreen(
               prefs: widget.prefs,
+              isLandingPage: true,
             ),
           ),
         ],
