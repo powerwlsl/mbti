@@ -16,13 +16,18 @@ class CustomDropdownButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
+      isExpanded: true,
       items: dropdownItemList
           .map((value) => DropdownMenuItem(
-                child: Center(child: Text(value)),
+                child: Container(
+                  child: Text(value),
+                ),
                 value: value,
               ))
           .toList(),
-      hint: new Text(hintString, textAlign: TextAlign.center),
+      hint: new Text(
+        hintString,
+      ),
       value: value,
       onChanged: (selectedVal) {
         onChangedCallback(selectedVal);

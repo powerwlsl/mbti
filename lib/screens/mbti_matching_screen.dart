@@ -27,43 +27,41 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
     }
 
     return Scaffold(
-      body: Center(
-        child: Container(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              CustomDropdownButton(
-                dropdownItemList: mbtiTypesList,
-                hintString: "My MBTI types",
-                value: widget.prefs.getString('mbtiType'),
-                onChangedCallback: (value) {
-                  setState(() {
-                    mbti_1 = value;
-                  });
-                },
-              ),
-              CustomDropdownButton(
-                dropdownItemList: mbtiTypesList,
-                hintString: "MBTI types",
-                value: mbti_2,
-                onChangedCallback: (value) {
-                  setState(() {
-                    mbti_2 = value;
-                  });
-                },
-              ),
-              CustomPrimaryFlatButton(
-                setResult,
-                "See Result",
-              ),
-              if (_result != null)
-                Container(
-                  child: Text(_result),
-                )
-            ],
-          ),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            CustomDropdownButton(
+              dropdownItemList: mbtiTypesList,
+              hintString: "Select MBTI",
+              value: widget.prefs.getString('mbtiType'),
+              onChangedCallback: (value) {
+                setState(() {
+                  mbti_1 = value;
+                });
+              },
+            ),
+            CustomDropdownButton(
+              dropdownItemList: mbtiTypesList,
+              hintString: "Select MBTI",
+              value: mbti_2,
+              onChangedCallback: (value) {
+                setState(() {
+                  mbti_2 = value;
+                });
+              },
+            ),
+            CustomPrimaryFlatButton(
+              setResult,
+              "See Result",
+            ),
+            if (_result != null)
+              Container(
+                child: Text(_result),
+              )
+          ],
         ),
       ),
     );

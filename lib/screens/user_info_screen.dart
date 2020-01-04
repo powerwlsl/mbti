@@ -70,7 +70,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     children: <Widget>[
                       CustomDropdownButton(
                         dropdownItemList: Mbtis.Types.keys.toList(),
-                        hintString: "MBTI types",
+                        hintString: "MBTI",
                         value: mbtiType,
                         onChangedCallback: (value) {
                           setState(() {
