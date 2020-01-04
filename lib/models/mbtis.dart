@@ -1,6 +1,7 @@
 class Mbtis {
   static const Map<String, Map> Types = {
     "INTJ": {
+      "type": "분석형",
       "character": "Architect",
       "color": 0xFF5F384C,
       "summary": "상상력이 풍부하며 철두철미한 계획을 세우는 전략가형.",
@@ -79,6 +80,7 @@ class Mbtis {
       ],
     },
     "INTP": {
+      "type": "분석형",
       "character": "Logician",
       "color": 0xFF5F384C,
       "summary": "끊임없이 새로운 지식에 목말라 하는 혁신가형.",
@@ -118,6 +120,7 @@ class Mbtis {
       ]
     },
     "ENTJ": {
+      "type": "분석형",
       "character": "Commander",
       "color": 0xFF5F384C,
       "summary":
@@ -148,6 +151,7 @@ class Mbtis {
       ]
     },
     "ENTP": {
+      "type": "분석형",
       "character": "Debater",
       "color": 0xFF5F384C,
       "summary": "지적인 도전을 두려워하지 않는 똑똑한 호기심형.",
@@ -192,6 +196,7 @@ class Mbtis {
       ]
     },
     "INFJ": {
+      "type": "외교형",
       "character": "Advocate",
       "color": 0xFF56AC89,
       "summary": "조용하고 신비로우며 샘솟는 영감으로 지칠 줄 모르는 이상주의자.",
@@ -226,6 +231,7 @@ class Mbtis {
       ]
     },
     "INFP": {
+      "type": "외교형",
       "character": "Mediator",
       "color": 0xFF56AC89,
       "summary": "상냥한 성격의 이타주의자로 건강하고 밝은 사회 건설에 앞장서는 낭만형.",
@@ -264,6 +270,7 @@ class Mbtis {
       ]
     },
     "ENFJ": {
+      "type": "외교형",
       "character": "Protagonist",
       "color": 0xFF56AC89,
       "summary": "넘치는 카리스마와 영향력으로 청중을 압도하는 리더형.",
@@ -291,6 +298,7 @@ class Mbtis {
       ]
     },
     "ENFP": {
+      "type": "외교형",
       "character": "Campaigner",
       "color": 0xFF56AC89,
       "summary":
@@ -322,6 +330,7 @@ class Mbtis {
       ]
     },
     "ISTJ": {
+      "type": "관리자형",
       "character": "Logistician",
       "color": 0xFF52A9AB,
       "summary": "사실에 근거하여 사고하며 이들의 행동이나 결정 사항에 한 치의 의심을 사지 않는 현실주의자형.",
@@ -353,6 +362,7 @@ class Mbtis {
       ]
     },
     "ISFJ": {
+      "type": "관리자형",
       "character": "Defender",
       "color": 0xFF52A9AB,
       "summary": "소중한 이들을 수호하는 데 심혈을 기울이는 헌신적이며 성실한 방어자형.",
@@ -392,6 +402,7 @@ class Mbtis {
       ]
     },
     "ESTJ": {
+      "type": "관리자형",
       "character": "Executive",
       "color": 0xFF52A9AB,
       "summary": "사물이나 사람을 관리하는 데 타의 추종을 불허하는 뛰어난 실력을 갖춘 관리자형.",
@@ -419,6 +430,7 @@ class Mbtis {
       ]
     },
     "ESFJ": {
+      "type": "관리자형",
       "character": "Consul",
       "color": 0xFF52A9AB,
       "summary": "타인을 향한 세심한 관심과 사교적인 성향으로 사람들 내에서 인기가 많으며, 타인을 돕는데 열성적인 세심형.",
@@ -459,6 +471,7 @@ class Mbtis {
       ]
     },
     "ISTP": {
+      "type": "탐험가형",
       "character": "Virtuoso",
       "color": 0xFFDFC109,
       "summary": "대담하고 현실적인 성향으로 다양한 도구 사용에 능숙한 탐험형.",
@@ -494,6 +507,7 @@ class Mbtis {
       ]
     },
     "ISFP": {
+      "type": "탐험가형",
       "character": "Adventurer",
       "color": 0xFFDFC109,
       "summary": "항시 새로운 것을 찾아 시도하거나 도전할 준비가 되어 있는 융통성 있는 성격의 매력 넘치는 예술가형. ",
@@ -526,6 +540,7 @@ class Mbtis {
       ]
     },
     "ESTP": {
+      "type": "탐험가형",
       "character": "Entrepreneur",
       "color": 0xFFDFC109,
       "summary":
@@ -563,6 +578,7 @@ class Mbtis {
       ]
     },
     "ESFP": {
+      "type": "탐험가형",
       "character": "Entertainer",
       "color": 0xFFDFC109,
       "summary": "주위에 있으면 인생이 지루할 새가 없을 정도로 즉흥적이며 열정과 에너지가 넘치는 연예인형.",
