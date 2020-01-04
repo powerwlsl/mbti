@@ -9,6 +9,7 @@ class CustomPrimaryFlatButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: onPressed,
+      disabledColor: Color(0xFFE0E0E0),
       padding: EdgeInsets.symmetric(vertical: 15),
       child: Text(
         title,

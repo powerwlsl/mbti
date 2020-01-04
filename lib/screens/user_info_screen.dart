@@ -41,9 +41,11 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
 
   void onPressed() async {
     final prefs = await SharedPreferences.getInstance();
+
     prefs.setString('mbtiType', mbtiType);
     prefs.setString('age', age);
     prefs.setString('gender', gender);
+
     if (widget.isLandingPage) {
       Navigator.pushReplacementNamed(
         context,
@@ -84,6 +86,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
+//                      TODO: on landing page, make it required
                       CustomDropdownButton(
                         dropdownItemList: Mbtis.Types.keys.toList(),
                         hintString: "MBTI",
@@ -117,7 +120,11 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         },
                       ),
 
-                      CustomPrimaryFlatButton(onPressed, "Save")
+                      CustomPrimaryFlatButton(
+                          (mbtiType != null && age != null && gender != null)
+                              ? onPressed
+                              : null,
+                          "Save")
                     ],
                   )),
             ),

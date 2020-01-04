@@ -36,7 +36,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
             CustomDropdownButton(
               dropdownItemList: mbtiTypesList,
               hintString: "Select MBTI",
-              value: widget.prefs.getString('mbtiType'),
+              value: mbti_1,
               onChangedCallback: (value) {
                 setState(() {
                   mbti_1 = value;
@@ -54,7 +54,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
               },
             ),
             CustomPrimaryFlatButton(
-              setResult,
+              (mbti_1 != null && mbti_2 != null) ? setResult : null,
               "See Result",
             ),
             if (_result != null)
