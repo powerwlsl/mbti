@@ -5,6 +5,7 @@ import 'package:mbti/screens/main_screen.dart';
 import 'package:mbti/screens/mbti_list_screen.dart';
 import 'package:mbti/screens/mbti_matching_screen.dart';
 import 'package:mbti/screens/user_info_screen.dart';
+import 'package:mbti/screens/landing_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.cyan,
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
         prefs.getString('age') != null) {
       return MyHomePage(prefs: prefs);
     } else {
-      return UserInfoScreen(prefs: prefs);
+      return LandingScreen(prefs: prefs);
     }
   }
 }
