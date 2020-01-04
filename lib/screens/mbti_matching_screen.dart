@@ -14,11 +14,11 @@ class MbtiMatchingScreen extends StatefulWidget {
 
 class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
   @override
-  String mbti_1;
-  String mbti_2;
   String _result;
 
   Widget build(BuildContext context) {
+    String mbti_1 = widget.prefs.getString('mbti_1');
+    String mbti_2 = widget.prefs.getString('mbti_2');
     List mbtiTypesList = Mbtis.Types.keys.toList();
     void setResult() {
       setState(() {
@@ -36,8 +36,9 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
             CustomDropdownButton(
               dropdownItemList: mbtiTypesList,
               hintString: "Select MBTI",
-              value: mbti_1,
+              value: widget.prefs.getString('mbti_1'),
               onChangedCallback: (value) {
+                widget.prefs.setString('mbti_1', value);
                 setState(() {
                   mbti_1 = value;
                 });
@@ -46,8 +47,9 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
             CustomDropdownButton(
               dropdownItemList: mbtiTypesList,
               hintString: "Select MBTI",
-              value: mbti_2,
+              value: widget.prefs.getString('mbti_2'),
               onChangedCallback: (value) {
+                widget.prefs.setString('mbti_2', value);
                 setState(() {
                   mbti_2 = value;
                 });
