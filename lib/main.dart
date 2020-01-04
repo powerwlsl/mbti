@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         tabs: [
           TabData(
             iconData: Icons.home,
-            title: "Home",
+            title: "My Mbti",
           ),
           TabData(
             iconData: Icons.apps,
