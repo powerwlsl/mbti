@@ -52,9 +52,10 @@ class MbtiGridListItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(
-//              TODO add proper icons
-              Icons.apps,
+            Image.asset(
+              'images/${Mbtis.Types[type]["character"]}.png',
+              height: 40,
+              width: 40,
               color: Color(Mbtis.Types[type]["color"]),
             ),
             Center(

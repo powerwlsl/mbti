@@ -29,7 +29,7 @@ class Mbtis {
       "color": 0xFF56AC89,
     },
     "ENFP": {
-      "character": "Campainger",
+      "character": "Campaigner",
       "color": 0xFF56AC89,
     },
     "ISTJ": {
