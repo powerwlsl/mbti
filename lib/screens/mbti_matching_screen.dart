@@ -34,6 +34,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             CustomDropdownButton(
+              hasIcon: true,
               dropdownItemList: mbtiTypesList,
               hintString: "Select MBTI",
               value: widget.prefs.getString('mbti_1'),
@@ -45,6 +46,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
               },
             ),
             CustomDropdownButton(
+              hasIcon: true,
               dropdownItemList: mbtiTypesList,
               hintString: "Select MBTI",
               value: widget.prefs.getString('mbti_2'),
@@ -61,6 +63,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
             ),
             if (_result != null)
               Container(
+//                TODO show matching rate
                 child: Text(_result),
               )
           ],

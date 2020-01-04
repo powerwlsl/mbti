@@ -20,10 +20,10 @@ class UserInfoScreen extends StatefulWidget {
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
-//  TODO: set initial values
   String mbtiType;
   String age;
   String gender;
+  Map mbtis = Mbtis.Types;
 
   List<String> genderList = ["MALE", "FEMALE"];
   List<String> ageRangeList = [
@@ -86,9 +86,9 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-//                      TODO: on landing page, make it required
                       CustomDropdownButton(
-                        dropdownItemList: Mbtis.Types.keys.toList(),
+                        hasIcon: true,
+                        dropdownItemList: mbtis.keys.toList(),
                         hintString: "MBTI",
                         value: mbtiType,
                         onChangedCallback: (value) {
@@ -97,7 +97,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           });
                         },
                       ),
-                      //  TODO: input field might be better
                       CustomDropdownButton(
                         dropdownItemList: ageRangeList,
                         hintString: "Age",
@@ -108,7 +107,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           });
                         },
                       ),
-
                       CustomDropdownButton(
                         dropdownItemList: genderList,
                         hintString: "Gender",
@@ -119,7 +117,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           });
                         },
                       ),
-
                       CustomPrimaryFlatButton(
                           (mbtiType != null && age != null && gender != null)
                               ? onPressed

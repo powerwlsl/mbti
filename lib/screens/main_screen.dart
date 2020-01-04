@@ -72,6 +72,8 @@ class _MainScreenState extends State<MainScreen> {
               style: kPrimaryMediumTextStyle.copyWith(color: Color(0xFF305675)),
             ),
           ),
+//          TODO scroll is kinda weird cause it only moves itself, not the entire page
+//https://api.flutter.dev/flutter/widgets/CustomScrollView-class.html
           Expanded(child: DetailListView(myMbti: myMbti)),
         ],
       ),

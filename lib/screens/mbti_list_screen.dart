@@ -13,8 +13,6 @@ class MbtiListScreen extends StatefulWidget {
 class _MbtiListScreenState extends State<MbtiListScreen> {
   @override
   Widget build(BuildContext context) {
-//  TODO: Group by mbti group
-
     return Scaffold(
       body: GridView.builder(
         itemCount: Mbtis.Types.length,
