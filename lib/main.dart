@@ -90,11 +90,11 @@ class _MyHomePageState extends State<MyHomePage> {
         tabs: [
           TabData(
             iconData: Icons.home,
-            title: "My Mbti",
+            title: "My MBTI",
           ),
           TabData(
             iconData: Icons.apps,
-            title: "Mbti List",
+            title: "MBTI List",
           ),
           TabData(
             iconData: Icons.pie_chart,
@@ -132,11 +132,11 @@ class _MyHomePageState extends State<MyHomePage> {
   _getTitle(int page) {
     switch (page) {
       case 0:
-        return "My Mbti";
+        return "My MBTI";
       case 1:
-        return "Mbti List";
+        return "MBTI List";
       case 2:
-        return "Mbti Match";
+        return "MBTI Match";
       default:
         return "Settings";
     }
