@@ -109,12 +109,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           });
                         },
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           Text(
-                            "나의 성격유형을 모른다면?",
-                            style: kSecondaryTextStyle,
+                            "나의 성격유형을 모른다면? ",
+                            style: kSecondaryTextStyle.copyWith(fontSize: 12),
                           ),
                           GestureDetector(
                             onTap: _launchURL,
@@ -123,8 +123,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                               style: kPrimarySmallTextStyle.copyWith(
                                 color: Color(0xFF305675),
                                 fontWeight: FontWeight.bold,
+                                fontSize: 12,
                               ),
-                              textAlign: TextAlign.right,
                             ),
                           ),
                         ],
