@@ -91,19 +91,19 @@ class _MyHomePageState extends State<MyHomePage> {
         tabs: [
           TabData(
             iconData: Icons.home,
-            title: "My MBTI",
+            title: "나의 MBTI",
           ),
           TabData(
             iconData: Icons.apps,
-            title: "MBTI List",
+            title: "MBTI 유형",
           ),
           TabData(
             iconData: Icons.pie_chart,
-            title: "Matching",
+            title: "MBTI 궁합",
           ),
           TabData(
             iconData: Icons.settings,
-            title: "Settings",
+            title: "설정",
           ),
         ],
         initialSelection: 0,
@@ -133,13 +133,13 @@ class _MyHomePageState extends State<MyHomePage> {
   _getTitle(int page) {
     switch (page) {
       case 0:
-        return "My MBTI";
+        return "나의 MBTI";
       case 1:
-        return "MBTI List";
+        return "MBTI 성격유형";
       case 2:
-        return "MBTI Match";
+        return "MBTI 궁합";
       default:
-        return "Settings";
+        return "설정";
     }
   }
 }

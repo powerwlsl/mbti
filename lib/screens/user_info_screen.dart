@@ -25,7 +25,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   String gender;
   Map mbtis = Mbtis.Types;
 
-  List<String> genderList = ["MALE", "FEMALE"];
+  List<String> genderList = ["남성", "여성"];
   List<String> ageRangeList = [
     for (var i = 1930; i < 2020; i += 1) i.toString()
   ];
@@ -89,7 +89,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                       CustomDropdownButton(
                         hasIcon: true,
                         dropdownItemList: mbtis.keys.toList(),
-                        hintString: "MBTI",
+                        hintString: "MBTI 유형",
                         value: mbtiType,
                         onChangedCallback: (value) {
                           setState(() {
@@ -99,7 +99,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                       ),
                       CustomDropdownButton(
                         dropdownItemList: ageRangeList,
-                        hintString: "Age",
+                        hintString: "나이",
                         value: age,
                         onChangedCallback: (value) {
                           setState(() {
@@ -109,7 +109,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                       ),
                       CustomDropdownButton(
                         dropdownItemList: genderList,
-                        hintString: "Gender",
+                        hintString: "성별",
                         value: gender,
                         onChangedCallback: (value) {
                           setState(() {
@@ -121,7 +121,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           (mbtiType != null && age != null && gender != null)
                               ? onPressed
                               : null,
-                          "Save")
+                          "저장")
                     ],
                   )),
             ),

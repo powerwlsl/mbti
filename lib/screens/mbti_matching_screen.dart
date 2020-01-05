@@ -85,7 +85,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                   CustomDropdownButton(
                     hasIcon: true,
                     dropdownItemList: mbtiTypesList,
-                    hintString: "Select MBTI",
+                    hintString: "첫 번째 MBTI 유형을 선택해주세요",
                     value: widget.prefs.getString('mbti_1'),
                     onChangedCallback: (value) {
                       widget.prefs.setString('mbti_1', value);
@@ -94,30 +94,31 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                       });
                     },
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MbtiScreen(mbti_1)));
-                    },
-                    child: Text(
-                      "$mbti_1 성격유형",
-                      style: kPrimarySmallTextStyle.copyWith(
-                        color: Color(0xFF305675),
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.bold,
+                  if (mbti_1 != null)
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MbtiScreen(mbti_1)));
+                      },
+                      child: Text(
+                        "$mbti_1 성격유형",
+                        style: kPrimarySmallTextStyle.copyWith(
+                          color: Color(0xFF305675),
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.right,
                       ),
-                      textAlign: TextAlign.right,
                     ),
-                  ),
                   SizedBox(
                     height: 10,
                   ),
                   CustomDropdownButton(
                     hasIcon: true,
                     dropdownItemList: mbtiTypesList,
-                    hintString: "Select MBTI",
+                    hintString: "두 번째 MBTI 유형을 선택해주세요",
                     value: widget.prefs.getString('mbti_2'),
                     onChangedCallback: (value) {
                       widget.prefs.setString('mbti_2', value);
@@ -126,29 +127,30 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                       });
                     },
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MbtiScreen(mbti_2)));
-                    },
-                    child: Text(
-                      "$mbti_2 성격유형",
-                      style: kPrimarySmallTextStyle.copyWith(
-                        color: Color(0xFF305675),
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.bold,
+                  if (mbti_2 != null)
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MbtiScreen(mbti_2)));
+                      },
+                      child: Text(
+                        "$mbti_2 성격유형",
+                        style: kPrimarySmallTextStyle.copyWith(
+                          color: Color(0xFF305675),
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.right,
                       ),
-                      textAlign: TextAlign.right,
                     ),
-                  ),
                   SizedBox(
                     height: 20,
                   ),
                   CustomPrimaryFlatButton(
                     (mbti_1 != null && mbti_2 != null) ? setResult : null,
-                    "See Result",
+                    "궁합보기",
                   ),
                 ],
               ),

@@ -15,6 +15,7 @@ class _LandingScreenState extends State<LandingScreen> {
     return Scaffold(
       body: Column(
         children: <Widget>[
+//          TODO 이미지 추가
           Container(
             width: double.infinity,
             height: 300,

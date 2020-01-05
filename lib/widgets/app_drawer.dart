@@ -9,7 +9,7 @@ class AppDrawer extends StatelessWidget {
           children: <Widget>[
             ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('My MBTI'),
+              title: Text('나의 MBTI'),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/main');
               },
@@ -17,7 +17,7 @@ class AppDrawer extends StatelessWidget {
             Divider(),
             ListTile(
               leading: Icon(Icons.apps),
-              title: Text('MBTI List'),
+              title: Text('MBTI 유형'),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/mbtis');
               },
@@ -25,7 +25,7 @@ class AppDrawer extends StatelessWidget {
             Divider(),
             ListTile(
               leading: Icon(Icons.group),
-              title: Text('MBTI Match Rate'),
+              title: Text('MBTI 궁합'),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/mbti_matching');
               },
