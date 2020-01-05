@@ -1,5 +1,6 @@
 class Mbtis {
   static const Map<String, Map> Types = {
+//    TODO 닷 빠진거 추가하기
     "INTJ": {
       "matching": {
         "best": ["ESTJ", "INTJ", "ISTP", "ENTJ"],

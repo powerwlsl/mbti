@@ -17,7 +17,7 @@ class _LandingScreenState extends State<LandingScreen> {
         children: <Widget>[
 //          TODO 이미지 추가
           SizedBox(
-            height: 50,
+            height: 30,
           ),
           Container(
             height: 300,

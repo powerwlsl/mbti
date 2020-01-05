@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
   MyApp({this.prefs});
 
   Widget build(BuildContext context) {
-    prefs.clear();
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

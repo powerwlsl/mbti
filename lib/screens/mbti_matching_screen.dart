@@ -78,7 +78,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
               ),
             ),
             Expanded(
-              flex: 3,
+              flex: 2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
@@ -103,7 +103,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                                 builder: (context) => MbtiScreen(mbti_1)));
                       },
                       child: Text(
-                        "$mbti_1 성격유형",
+                        "$mbti_1 성격유형 보기",
                         style: kPrimarySmallTextStyle.copyWith(
                           color: Color(0xFF305675),
                           fontWeight: FontWeight.bold,
@@ -135,7 +135,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                                 builder: (context) => MbtiScreen(mbti_2)));
                       },
                       child: Text(
-                        "$mbti_2 성격유형",
+                        "$mbti_2 성격유형 보기",
                         style: kPrimarySmallTextStyle.copyWith(
                           color: Color(0xFF305675),
                           fontWeight: FontWeight.bold,
