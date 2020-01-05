@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mbti/widgets/matching_mbti_list.dart';
 import 'package:mbti/constants.dart';
 import 'package:mbti/models/mbtis.dart';
 
@@ -24,119 +24,39 @@ class _MainScreenState extends State<MainScreen> {
             child: Card(
               elevation: 3,
               margin: EdgeInsets.all(20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  ListTile(
-                    contentPadding: EdgeInsets.all(20),
-                    leading: Padding(
-                      padding: const EdgeInsets.only(right: 20),
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            "My MBTI",
-                            style: kSecondaryTextStyle,
-                          ),
-                          Text(
-                            myMbtiType,
-                            style: kPrimaryTextStyle.copyWith(
-                              color: Color(myMbti["color"]),
-                            ),
-                          ),
-                        ],
+              child: ListTile(
+                contentPadding: EdgeInsets.all(20),
+                leading: Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "My MBTI",
+                        style: kSecondaryTextStyle,
                       ),
-                    ),
-                    title: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        myMbti["character"],
+                      Text(
+                        myMbtiType,
+                        style: kPrimaryTextStyle.copyWith(
+                          color: Color(myMbti["color"]),
+                        ),
                       ),
-                    ),
-                    subtitle: Text(myMbti["summary"]),
+                    ],
                   ),
-                ],
+                ),
+                title: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    myMbti["character"],
+                  ),
+                ),
+                subtitle: Text(myMbti["summary"]),
               ),
             ),
           ),
         ),
         SliverToBoxAdapter(
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                margin: EdgeInsets.all(20),
-                child: Text(
-                  "$myMbtiType와의 궁합",
-//            textAlign: TextAlign.center,
-                  style: kPrimaryMediumTextStyle.copyWith(
-                      color: Color(0xFF305675)),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Image.asset(
-                          'images/best.png',
-                          width: 30,
-                          color: Colors.green,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Flexible(
-                          child: Text(
-                            myMbti["matching"]["best"].join(', '),
-                            style: kPrimarySmallTextStyle,
-                          ),
-                        ),
-                      ],
-                    ),
-//                    TODO make each mbti clickable?
-                    Row(
-                      children: <Widget>[
-                        Image.asset(
-                          'images/normal.png',
-                          width: 30,
-                          color: Colors.orange,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Flexible(
-                          child: Text(
-                            myMbti["matching"]["normal"].join(', '),
-                            style: kPrimarySmallTextStyle,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Image.asset(
-                          'images/bad.png',
-                          width: 30,
-                          color: Colors.red,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Flexible(
-                          child: Text(
-                            myMbti["matching"]["bad"].join(', '),
-                            style: kPrimarySmallTextStyle,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+          child: MatchingMbtiList(
+              selectedMbtiType: myMbtiType, selectedMbtiHash: myMbti),
         ),
         SliverToBoxAdapter(
           child: SizedBox(

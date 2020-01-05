@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mbti/models/mbtis.dart';
+
 import 'package:mbti/screens/main_screen.dart';
 
 class MbtiScreen extends StatefulWidget {
@@ -13,7 +13,7 @@ class MbtiScreen extends StatefulWidget {
 class _MbtiScreenState extends State<MbtiScreen> {
   @override
   Widget build(BuildContext context) {
-    Map myMbti = Mbtis.Types[widget.type];
+    print(widget.type);
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(

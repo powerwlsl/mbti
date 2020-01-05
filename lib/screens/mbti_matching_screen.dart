@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mbti/constants.dart';
+import 'package:mbti/screens/mbti_screen.dart';
 import 'package:mbti/widgets/custom_primary_flat_button.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:mbti/widgets/custom_dropdown_button.dart';
@@ -93,6 +94,26 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                       });
                     },
                   ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MbtiScreen(mbti_1)));
+                    },
+                    child: Text(
+                      "$mbti_1 성격유형",
+                      style: kPrimarySmallTextStyle.copyWith(
+                        color: Color(0xFF305675),
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   CustomDropdownButton(
                     hasIcon: true,
                     dropdownItemList: mbtiTypesList,
@@ -105,13 +126,33 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                       });
                     },
                   ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MbtiScreen(mbti_2)));
+                    },
+                    child: Text(
+                      "$mbti_2 성격유형",
+                      style: kPrimarySmallTextStyle.copyWith(
+                        color: Color(0xFF305675),
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   CustomPrimaryFlatButton(
                     (mbti_1 != null && mbti_2 != null) ? setResult : null,
                     "See Result",
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

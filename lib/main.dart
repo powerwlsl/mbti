@@ -1,3 +1,4 @@
+import 'package:mbti/screens/mbti_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
