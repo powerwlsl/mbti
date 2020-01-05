@@ -16,10 +16,12 @@ class _LandingScreenState extends State<LandingScreen> {
       body: Column(
         children: <Widget>[
 //          TODO 이미지 추가
+          SizedBox(
+            height: 50,
+          ),
           Container(
-            width: double.infinity,
             height: 300,
-            child: Image.asset('images/Consul.png'),
+            child: Image.asset('images/logo.png'),
           ),
           Container(
             height: 300,

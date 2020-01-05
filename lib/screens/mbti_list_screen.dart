@@ -66,7 +66,7 @@ class MbtiGridListItem extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
+            Flexible(
               child: Text(
                 Mbtis.Types[type]["character_ko"],
                 style: kSecondarySmallTextStyle.copyWith(

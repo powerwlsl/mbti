@@ -47,6 +47,9 @@ class MatchingMbtiList extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 5,
+              ),
 //                    TODO make each mbti clickable?
               Row(
                 children: <Widget>[
@@ -65,6 +68,9 @@ class MatchingMbtiList extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 5,
               ),
               Row(
                 children: <Widget>[
