@@ -46,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
                 title: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    myMbti["character"],
+                    myMbti["character_ko"],
                   ),
                 ),
                 subtitle: Text(myMbti["summary"]),

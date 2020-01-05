@@ -68,8 +68,11 @@ class MbtiGridListItem extends StatelessWidget {
             ),
             Center(
               child: Text(
-                Mbtis.Types[type]["character"],
-                style: kSecondarySmallTextStyle,
+                Mbtis.Types[type]["character_ko"],
+                style: kSecondarySmallTextStyle.copyWith(
+                  fontSize: 10,
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
           ],
