@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mbti/widgets/custom_dropdown_button.dart';
 import 'package:mbti/widgets/custom_primary_flat_button.dart';
 import 'package:mbti/main.dart';
+import 'package:mbti/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -64,6 +66,16 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     }
   }
 
+  _launchURL() async {
+    const url =
+        'https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw '$url 오픈 실패';
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -96,6 +108,27 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                             mbtiType = value;
                           });
                         },
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Text(
+                            "나의 성격유형을 모른다면?",
+                            style: kSecondaryTextStyle,
+                          ),
+                          GestureDetector(
+                            onTap: _launchURL,
+                            child: Text(
+                              "무료 성격유형 검사하기",
+                              style: kPrimarySmallTextStyle.copyWith(
+                                color: Color(0xFF305675),
+                                decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ],
                       ),
                       CustomDropdownButton(
                         dropdownItemList: ageRangeList,
