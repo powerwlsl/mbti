@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _getPage(int page) {
     switch (page) {
       case 0:
-        return MainScreen(prefs: prefs);
+        return MainScreen(prefs.getString('mbtiType'));
       case 1:
         return MbtiListScreen();
       case 2:

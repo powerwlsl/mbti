@@ -4,8 +4,8 @@ import 'package:mbti/constants.dart';
 import 'package:mbti/models/mbtis.dart';
 
 class MainScreen extends StatefulWidget {
-  final SharedPreferences prefs;
-  MainScreen({this.prefs});
+  final String type;
+  MainScreen(this.type);
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -14,7 +14,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    String myMbtiType = widget.prefs.getString('mbtiType');
+    String myMbtiType = widget.type;
     Map myMbti = Mbtis.Types[myMbtiType];
 
     return CustomScrollView(

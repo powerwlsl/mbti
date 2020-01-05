@@ -16,6 +16,7 @@ class Mbtis {
         ],
       },
       "type": "분석형",
+//      TODO translate to korean
       "character": "Architect",
       "color": 0xFF5F384C,
       "summary": "상상력이 풍부하며 철두철미한 계획을 세우는 전략가형.",
