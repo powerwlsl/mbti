@@ -106,7 +106,6 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                         "$mbti_1 성격유형",
                         style: kPrimarySmallTextStyle.copyWith(
                           color: Color(0xFF305675),
-                          decoration: TextDecoration.underline,
                           fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.right,
@@ -139,7 +138,6 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                         "$mbti_2 성격유형",
                         style: kPrimarySmallTextStyle.copyWith(
                           color: Color(0xFF305675),
-                          decoration: TextDecoration.underline,
                           fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.right,

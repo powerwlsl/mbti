@@ -122,7 +122,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                               "무료 성격유형 검사하기",
                               style: kPrimarySmallTextStyle.copyWith(
                                 color: Color(0xFF305675),
-                                decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.bold,
                               ),
                               textAlign: TextAlign.right,
