@@ -99,6 +99,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       CustomDropdownButton(
+                        key: Key('mbtiTypeDropdownButton'),
                         hasIcon: true,
                         dropdownItemList: mbtis.keys.toList(),
                         hintString: "MBTI 유형",
@@ -130,6 +131,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         ],
                       ),
                       CustomDropdownButton(
+                        key: Key('ageDropdownButton'),
                         dropdownItemList: ageRangeList,
                         hintString: "나이",
                         value: age,
@@ -140,6 +142,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         },
                       ),
                       CustomDropdownButton(
+                        key: Key('genderDropdownButton'),
                         dropdownItemList: genderList,
                         hintString: "성별",
                         value: gender,

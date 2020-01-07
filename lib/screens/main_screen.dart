@@ -20,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
+          key: Key('mainScreenPage'),
           child: Container(
             child: Card(
               elevation: 3,

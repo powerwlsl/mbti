@@ -83,6 +83,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   CustomDropdownButton(
+                    key: Key('mbti_1'),
                     hasIcon: true,
                     dropdownItemList: mbtiTypesList,
                     hintString: "첫 번째 MBTI 유형을 선택해주세요",
@@ -115,6 +116,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                     height: 10,
                   ),
                   CustomDropdownButton(
+                    key: Key('mbti_2'),
                     hasIcon: true,
                     dropdownItemList: mbtiTypesList,
                     hintString: "두 번째 MBTI 유형을 선택해주세요",

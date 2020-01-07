@@ -15,12 +15,11 @@ class _LandingScreenState extends State<LandingScreen> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-//          TODO 이미지 추가
           SizedBox(
             height: 30,
           ),
           Container(
-            height: 300,
+            height: 250,
             child: Image.asset('images/logo.png'),
           ),
           Container(
