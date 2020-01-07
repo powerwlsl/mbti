@@ -58,6 +58,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
             Expanded(
               flex: 1,
               child: AnimatedOpacity(
+                key: Key('result'),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
