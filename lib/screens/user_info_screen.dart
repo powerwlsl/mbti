@@ -99,7 +99,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       CustomDropdownButton(
-                        key: Key('mbtiTypeDropdownButton'),
+                        keyString: 'mbtiTypeDropdownButton',
                         hasIcon: true,
                         dropdownItemList: mbtis.keys.toList(),
                         hintString: "MBTI 유형",
@@ -131,7 +131,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         ],
                       ),
                       CustomDropdownButton(
-                        key: Key('ageDropdownButton'),
+                        keyString: 'ageDropdownButton',
                         dropdownItemList: ageRangeList,
                         hintString: "나이",
                         value: age,
@@ -142,7 +142,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         },
                       ),
                       CustomDropdownButton(
-                        key: Key('genderDropdownButton'),
+                        keyString: 'genderDropdownButton',
                         dropdownItemList: genderList,
                         hintString: "성별",
                         value: gender,
@@ -153,10 +153,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         },
                       ),
                       CustomPrimaryFlatButton(
-                          (mbtiType != null && age != null && gender != null)
-                              ? onPressed
-                              : null,
-                          "저장")
+                        (mbtiType != null && age != null && gender != null)
+                            ? onPressed
+                            : null,
+                        "저장",
+                        'saveButton',
+                      )
                     ],
                   )),
             ),

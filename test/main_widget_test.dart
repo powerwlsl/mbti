@@ -11,9 +11,9 @@ void main() {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     await tester.pumpWidget(MyApp(prefs: prefs));
-    expect(find.byKey(Key('mbtiTypeDropdownButton')), findsNWidgets(2));
-    expect(find.byKey(Key('genderDropdownButton')), findsNWidgets(2));
-    expect(find.byKey(Key('ageDropdownButton')), findsNWidgets(2));
+    expect(find.byKey(Key('mbtiTypeDropdownButton')), findsOneWidget);
+    expect(find.byKey(Key('genderDropdownButton')), findsOneWidget);
+    expect(find.byKey(Key('ageDropdownButton')), findsOneWidget);
   });
 
   testWidgets('if gender, age, mbti is saved in shared preference',
@@ -26,6 +26,7 @@ void main() {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     await tester.pumpWidget(MyApp(prefs: prefs));
+
     expect(find.byKey(Key('mainScreenPage')), findsOneWidget);
     expect(find.byKey(Key('mbtiTypeDropdownButton')), findsNothing);
     expect(find.byKey(Key('genderDropdownButton')), findsNothing);

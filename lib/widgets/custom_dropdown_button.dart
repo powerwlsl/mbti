@@ -7,7 +7,7 @@ class CustomDropdownButton extends StatelessWidget {
   final String value;
   final Function onChangedCallback;
   final bool hasIcon;
-  final Key key;
+  final String keyString;
 
   CustomDropdownButton({
     @required this.dropdownItemList,
@@ -15,16 +15,17 @@ class CustomDropdownButton extends StatelessWidget {
     @required this.value,
     @required this.onChangedCallback,
     this.hasIcon = false,
-    this.key,
+    this.keyString,
   });
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      key: key,
+      key: Key(keyString),
       isExpanded: true,
       items: dropdownItemList
           .map((value) => DropdownMenuItem(
+                key: Key(value),
                 child: Row(
                   children: <Widget>[
                     Text(value),
