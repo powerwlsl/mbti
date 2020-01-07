@@ -30,21 +30,17 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
       });
 
       Future.delayed(const Duration(milliseconds: 300), () {
-        Mbtis.Types[mbti_1]["matching"].forEach((key, value) {
-          if (value.contains(mbti_2)) {
-            setState(() {
-              _result = key;
-            });
-
-            if (_result == "best") {
-              resultColor = Colors.green;
-            } else if (_result == "normal") {
-              resultColor = Colors.orange;
-            } else {
-              resultColor = Colors.red;
-            }
-          }
+        setState(() {
+          _result = Mbtis.getResult(mbti_1, mbti_2);
         });
+
+        if (_result == "best") {
+          resultColor = Colors.green;
+        } else if (_result == "normal") {
+          resultColor = Colors.orange;
+        } else {
+          resultColor = Colors.red;
+        }
       });
     }
 

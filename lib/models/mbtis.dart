@@ -8,7 +8,6 @@ class Mbtis {
         "bad": ["ESFJ", "ISFJ", "ESTP", "ESFP", "ISFP", "ENTP", "INFP", "ENFJ"],
       },
       "type": "분석형",
-//      TODO translate to korean
       "character": "Architect",
       "character_ko": "용의주도한 전략가",
       "color": 0xFF5F384C,
@@ -759,4 +758,14 @@ class Mbtis {
     "Sentinels": ["ISTJ", "ISFJ", "ESTJ", "ESFJ"],
     "Explorers": ["ISTP", "ISFP", "ESTP", "ESFP"],
   };
+
+  static String getResult(String mbti_1, String mbti_2) {
+    String matchingKey;
+    Types[mbti_1]["matching"].forEach((key, value) {
+      if (value.contains(mbti_2)) {
+        matchingKey = key;
+      }
+    });
+    return matchingKey;
+  }
 }
