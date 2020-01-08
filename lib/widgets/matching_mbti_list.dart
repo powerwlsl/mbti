@@ -28,13 +28,13 @@ class MatchingMbtiList extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: selectedMbtiHash["matching"]
-                .keys
-                .map<Widget>((key) => MatchingRateRow(
-                      result: key,
-                      mbtis: selectedMbtiHash["matching"][key],
-                    ))
-                .toList(),
+            children: <Widget>[
+              for (var item in selectedMbtiHash["matching"].keys)
+                MatchingRateRow(
+                  result: item,
+                  selectedMbtiHash: selectedMbtiHash,
+                )
+            ],
           ),
         ),
       ],
@@ -43,9 +43,9 @@ class MatchingMbtiList extends StatelessWidget {
 }
 
 class MatchingRateRow extends StatelessWidget {
-  MatchingRateRow({this.result, this.mbtis});
+  MatchingRateRow({this.result, this.selectedMbtiHash});
   final String result;
-  final List<String> mbtis;
+  final Map selectedMbtiHash;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class MatchingRateRow extends StatelessWidget {
           ),
           Flexible(
             child: Text(
-              mbtis.join(', '),
+              selectedMbtiHash["matching"][result].join(', '),
               style: kPrimarySmallTextStyle,
             ),
           ),

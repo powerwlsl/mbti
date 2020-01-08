@@ -805,7 +805,6 @@ class Mbtis {
           'ISFJ',
           'ISTJ',
         ],
-        "good": [],
         "normal": [
           'INTJ',
           'ENTJ',

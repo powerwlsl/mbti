@@ -7,6 +7,7 @@ import 'package:mbti/widgets/custom_primary_flat_button.dart';
 import 'package:mbti/main.dart';
 import 'package:mbti/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -26,6 +27,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   String age;
   String gender;
   Map mbtis = Mbtis.Types;
+  final _firestore = Firestore.instance;
 
   List<String> genderList = ["남성", "여성"];
   List<String> ageRangeList = [
@@ -47,7 +49,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     prefs.setString('mbtiType', mbtiType);
     prefs.setString('age', age);
     prefs.setString('gender', gender);
-
+    _saveInFirestore();
     if (widget.isLandingPage) {
       Navigator.pushReplacementNamed(
         context,
@@ -64,6 +66,17 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
         ),
       );
     }
+  }
+
+  void _saveInFirestore() {
+    _firestore
+        .collection('userData')
+        .document(widget.prefs.getString('uuid'))
+        .setData({
+      'mbti': mbtiType,
+      'age': age,
+      'gender': gender,
+    });
   }
 
   _launchURL() async {
