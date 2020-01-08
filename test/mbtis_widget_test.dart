@@ -6,9 +6,12 @@ void main() {
       (WidgetTester tester) async {
     Mbtis.Types.keys.forEach((mbti_1) {
       Mbtis.Types.keys.forEach((mbti_2) {
-        String result = Mbtis.getResult(mbti_1, mbti_2);
-        print('$mbti_1 $mbti_2');
-        expect(result, isNotNull);
+        String result1 = Mbtis.getResult(mbti_1, mbti_2);
+        String result2 = Mbtis.getResult(mbti_2, mbti_1);
+
+        expect(result1, isNotNull);
+        expect(result2, isNotNull);
+        expect(result1, result2);
       });
     });
   });

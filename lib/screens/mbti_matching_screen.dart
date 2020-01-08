@@ -55,7 +55,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                         color: Mbtis.EmojiColor[_result],
                       ),
                     if (_result != null)
-                      Text(_result.toUpperCase(),
+                      Text(_result.replaceAll('_', ' ').toUpperCase(),
                           style: kPrimaryTextStyle.copyWith(
                             color: Mbtis.EmojiColor[_result],
                           )),

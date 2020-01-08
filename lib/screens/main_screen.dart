@@ -87,9 +87,6 @@ class _MainScreenState extends State<MainScreen> {
                 borderRadius: BorderRadius.circular(5),
               ),
               child: ListTile(
-                leading: Icon(
-                  Icons.done,
-                ),
                 title: Text(
                   myMbti["details"][index],
                 ),
