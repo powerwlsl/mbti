@@ -1,11 +1,14 @@
+import 'package:flutter/material.dart';
+
 class Mbtis {
   static const Map<String, Map> Types = {
 //    TODO 닷 빠진거 추가하기
     "INTJ": {
       "matching": {
-        "best": ["ESTJ", "INTJ", "ISTP", "ENTJ"],
-        "normal": ["INTP", "INFJ", "INFP", "ENFP"],
-        "bad": ["ESFJ", "ISFJ", "ESTP", "ESFP", "ISFP", "ENTP", "INFP", "ENFJ"],
+        "best": ["ENFP", "ENTP"],
+        "good": ['INFP', 'INFJ', 'ENFJ', 'INTJ', 'ENTJ', 'INTP'],
+        "normal": ['ISFP', 'ESFP', 'ISTP', 'ESTP'],
+        "not bad": ['ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
       },
       "type": "분석형",
       "character": "Architect",
@@ -88,18 +91,10 @@ class Mbtis {
     },
     "INTP": {
       "matching": {
-        "best": ["ENTP", "INTP", "INTJ"],
-        "normal": [
-          "ESTJ",
-          "ISTJ",
-          "ESTP",
-          "ENTJ",
-          "ENFJ",
-          "INFJ",
-          "ENFP",
-          "INFP"
-        ],
-        "bad": ["ESFJ", "ISFJ", "ISTP", "ESFP", "ISFP"],
+        "best": ['ENTJ', 'ESTJ'],
+        "good": ['INFP', 'ENFP', 'INFJ', 'ENFJ', 'INTJ', 'INTP', 'ENTP'],
+        "normal": ['ISFP', 'ESFP', 'ISTP', 'ESTP'],
+        "not bad": ['ISFJ', 'ESFJ', 'ISTJ'],
       },
       "type": "분석형",
       "character": "Logician",
@@ -143,9 +138,18 @@ class Mbtis {
     },
     "ENTJ": {
       "matching": {
-        "best": ["ESTJ", "ISTP", "ENTJ", "ENFJ", "INTJ"],
-        "normal": ["ISTJ", "ESTP", "ENTP", "INTP", "INFJ", "ENFP"],
-        "bad": ["ESFJ", "ISFJ", "ESFP", "ISFP", "INFP"],
+        "best": ["INFP", 'INTP'],
+        "good": ['ENFP', 'INFJ', 'ENFJ', 'INTJ', 'ENTJ', 'ENTP'],
+        "normal": [
+          'ISFP',
+          'ESFP',
+          'ISTP',
+          'ESTP',
+          'ISFJ',
+          'ESFJ',
+          'ISTJ',
+          'ESTJ'
+        ],
       },
       "type": "분석형",
       "character": "Commander",
@@ -180,18 +184,30 @@ class Mbtis {
     },
     "ENTP": {
       "matching": {
-        "best": ["ENTP", "INTP", "INFJ"],
-        "normal": [
-          "ESTJ",
-          "ISTJ",
-          "ESTP",
-          "ESFP",
-          "ENTJ",
-          "ENFP",
-          "INFP",
-          "ENFJ"
+        "best": [
+          'INFJ',
+          'INTJ',
         ],
-        "bad": ["ESFJ", "ISFJ", "ISTP", "ISFP", "INTJ"],
+        "good": [
+          'INFP',
+          'ENFP',
+          'ENFJ',
+          'ENTJ',
+          'INTP',
+          'ENTP',
+        ],
+        "normal": [
+          'ISFP',
+          'ESFP',
+          'ISTP',
+          'ESTP',
+        ],
+        "not bad": [
+          'ISFJ',
+          'ESFJ',
+          'ISTJ',
+          'ESTJ',
+        ],
       },
       "type": "분석형",
       "character": "Debater",
@@ -240,9 +256,9 @@ class Mbtis {
     },
     "INFJ": {
       "matching": {
-        "best": ["ENTP", "ENFP", "INFJ", "INFP", "ENFJ"],
-        "normal": ["ISFJ", "ESFP", "ISFP", "ENTJ", "INTJ", "INTP", "ISTJ"],
-        "bad": ["ESTJ", "ESFJ", "ESTP", "ISTP"],
+        "best": ['ENFP', 'ENTP'],
+        "good": ['INFP', 'INFJ', 'ENFJ', 'INTJ', 'ENTJ', 'INTP'],
+        "bad": ['ISFP', 'ESFP', 'ISTP', 'ESTP', 'ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
       },
       "type": "외교형",
       "character": "Advocate",
@@ -281,9 +297,9 @@ class Mbtis {
     },
     "INFP": {
       "matching": {
-        "best": ["ENFP", "INFP", "ENFJ", "INFJ"],
-        "normal": ["ISFJ", "ESFJ", "ESFP", "ISFP", "ENTP", "INTP"],
-        "bad": ["ESTJ", "ISTJ", "ESTP", "ISTP", "ENTJ", "INTJ"],
+        "best": ['ENFJ', 'ENTJ'],
+        "good": ['INFP', 'ENFP', 'INFJ', 'INTJ', 'INTP', 'ENTP'],
+        "bad": ['ISFP', 'ESFP', 'ISTP', 'ESTP', 'ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
       },
       "type": "외교형",
       "character": "Mediator",
@@ -326,9 +342,9 @@ class Mbtis {
     },
     "ENFJ": {
       "matching": {
-        "best": ["ISFJ", "ENFJ", "ENTJ", "INFJ", "ENFP", "INFP"],
-        "normal": ["ESFJ", "ESFP", "ISFP", "INTP", "ISTJ", "ENTP"],
-        "bad": ["ESTJ", "ESTP", "ISTP", "INTJ"],
+        "best": ['INFP', 'ISFP'],
+        "good": ['ENFP', 'INFJ', 'ENFJ', 'INTJ', 'ENTJ', 'INTP', 'ENTP'],
+        "bad": ['ESFP', 'ISTP', 'ESTP', 'ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
       },
       "type": "외교형",
       "character": "Protagonist",
@@ -360,9 +376,19 @@ class Mbtis {
     },
     "ENFP": {
       "matching": {
-        "best": ["INFJ", "INFP", "ENFJ", "ENFP", "ESFJ"],
-        "normal": ["ENTJ", "ENTP", "INTJ", "INTP", "ESFP", "ISFP"],
-        "bad": ["ISTJ", "ESTJ", "ISTP", "ESTP", "ISFJ"],
+        "best": [
+          'INFJ',
+          'INTJ',
+        ],
+        "good": [
+          'INFP',
+          'ENFP',
+          'ENFJ',
+          'ENTJ',
+          'INTP',
+          'ENTP',
+        ],
+        "bad": ['ISFP', 'ESFP', 'ISTP', 'ESTP', 'ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
       },
       "type": "외교형",
       "character": "Campaigner",
@@ -398,9 +424,27 @@ class Mbtis {
     },
     "ISTJ": {
       "matching": {
-        "best": ["ESTJ", "ISTJ", "INTJ", "ISTP", "ESTP"],
-        "normal": ["ENTJ", "INTP", "ENFJ", "INFJ", "ISFJ", "ISFP", "ENTP"],
-        "bad": ["ESFJ", "ESFP", "ENFP", "INFP"],
+        "best": [
+          'ESFP',
+          'ESTP',
+        ],
+        "good": ['ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
+        "normal": [
+          'ENTJ',
+          'ISFP',
+          'ISTP',
+        ],
+        "not bad": [
+          'INTJ',
+          'INTP',
+          'ENTP',
+        ],
+        "bad": [
+          'INFP',
+          'ENFP',
+          'INFJ',
+          'ENFJ',
+        ],
       },
       "type": "관리자형",
       "character": "Logistician",
@@ -436,18 +480,27 @@ class Mbtis {
     },
     "ISFJ": {
       "matching": {
-        "best": ["ISFJ", "ENFJ", "ESTJ"],
-        "normal": [
-          "ESFJ",
-          "ESTP",
-          "ISFP",
-          "INFJ",
-          "INFP",
-          "ESFP",
-          "ISTJ",
-          "ISFP"
+        "best": [
+          'ESFP',
+          'ESTP',
         ],
-        "bad": ["ENTJ", "INTJ", "ENTP", "INTP", "ENFP"],
+        "good": ['ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
+        "normal": [
+          'ENTJ',
+          'ISFP',
+          'ISTP',
+        ],
+        "not bad": [
+          'INTJ',
+          'INTP',
+          'ENTP',
+        ],
+        "bad": [
+          'INFP',
+          'ENFP',
+          'INFJ',
+          'ENFJ',
+        ],
       },
       "type": "관리자형",
       "character": "Defender",
@@ -491,9 +544,32 @@ class Mbtis {
     },
     "ESTJ": {
       "matching": {
-        "best": ["ISTJ", "ESFJ", "ISFJ", "ENTJ", "INTJ", "ISTP"],
-        "normal": ["ENTP", "INTP", "ESTP", "ESFP", "ISFP"],
-        "bad": ["ESTJ", "ENFJ", "INFJ", "INFP", "ENFP"],
+        "best": [
+          'INTP',
+          'ISFP',
+          'ISTP',
+        ],
+        "good": [
+          'ISFJ',
+          'ESFJ',
+          'ISTJ',
+          'ESTJ',
+        ],
+        "normal": [
+          'ENTJ',
+          'ESFP',
+          'ESTP',
+        ],
+        "not bad": [
+          'INTJ',
+          'ENTP',
+        ],
+        "bad": [
+          'INFP',
+          'ENFP',
+          'INFJ',
+          'ENFJ',
+        ],
       },
       "type": "관리자형",
       "character": "Executive",
@@ -525,9 +601,32 @@ class Mbtis {
     },
     "ESFJ": {
       "matching": {
-        "best": ["ESTJ", "ENFP"],
-        "normal": ["ISFJ", "ESFJ", "ENFJ", "INFP", "ISFP", "ISTP", "ESFP"],
-        "bad": ["ESTP", "ENTJ", "INTJ", "ENTP", "INTP", "INFJ", "ISTJ"],
+        "best": [
+          'ISFP',
+          'ISTP',
+        ],
+        "good": [
+          'ISFJ',
+          'ESFJ',
+          'ISTJ',
+          'ESTJ',
+        ],
+        "normal": [
+          'ENTJ',
+          'ESFP',
+          'ESTP',
+        ],
+        "not bad": [
+          'INTP',
+          'INTJ',
+          'ENTP',
+        ],
+        "bad": [
+          'INFP',
+          'ENFP',
+          'INFJ',
+          'ENFJ',
+        ],
       },
       "type": "관리자형",
       "character": "Consul",
@@ -572,9 +671,31 @@ class Mbtis {
     },
     "ISTP": {
       "matching": {
-        "best": ["ESTJ", "ISTJ", "ENTJ", "ESTP"],
-        "normal": ["ESFJ", "ISFP", "INTJ", "ISFJ"],
-        "bad": ["ISTP", "ESFP", "ENTP", "INTP", "ENFJ", "INFJ", "ENFP", "INFP"],
+        "best": [
+          'ESFJ',
+          'ESTJ',
+        ],
+        "good": [],
+        "normal": [
+          'INTJ',
+          'ENTJ',
+          'INTP',
+          'ENTP',
+          'ISFJ',
+          'ISTJ',
+        ],
+        "not bad": [
+          'ISFP',
+          'ESFP',
+          'ISTP',
+          'ESTP',
+        ],
+        "bad": [
+          'INFP',
+          'ENFP',
+          'INFJ',
+          'ENFJ',
+        ],
       },
       "type": "탐험가형",
       "character": "Virtuoso",
@@ -614,20 +735,31 @@ class Mbtis {
     },
     "ISFP": {
       "matching": {
-        "best": ["ESFP", "ISFP"],
-        "normal": [
-          "ESTP",
-          "ESTJ",
-          "ESFJ",
-          "ISTP",
-          "ENFJ",
-          "INFJ",
-          "INFP",
-          "ISFJ",
-          "ISTJ",
-          "ENFP"
+        "best": [
+          'ENFJ',
+          'ESFJ',
+          'ESTJ',
         ],
-        "bad": ["ENTJ", "INTJ", "ENTP", "INTP"],
+        "good": [],
+        "normal": [
+          'INTJ',
+          'ENTJ',
+          'INTP',
+          'ENTP',
+          'ISFJ',
+          'ISTJ',
+        ],
+        "not bad": [
+          'ISFP',
+          'ESFP',
+          'ISTP',
+          'ESTP',
+        ],
+        "bad": [
+          'INFP',
+          'ENFP',
+          'INFJ',
+        ],
       },
       "type": "탐험가형",
       "character": "Adventurer",
@@ -664,9 +796,31 @@ class Mbtis {
     },
     "ESTP": {
       "matching": {
-        "best": ["ISTJ", "ESTP", "ISTP", "ESFP"],
-        "normal": ["ESTJ", "ISFP", "ENTJ", "ENTP", "INTP", "ISFJ"],
-        "bad": ["ESFJ", "INTJ", "ENFJ", "INFJ", "ENFP", "INFP"],
+        "best": [
+          'ISFJ',
+          'ISTJ',
+        ],
+        "good": [],
+        "normal": [
+          'INTJ',
+          'ENTJ',
+          'INTP',
+          'ENTP',
+          'ESFJ',
+          'ESTJ',
+        ],
+        "not bad": [
+          'ISFP',
+          'ESFP',
+          'ISTP',
+          'ESTP',
+        ],
+        "bad": [
+          'INFP',
+          'ENFP',
+          'INFJ',
+          'ENFJ',
+        ],
       },
       "type": "탐험가형",
       "character": "Entrepreneur",
@@ -708,19 +862,31 @@ class Mbtis {
     },
     "ESFP": {
       "matching": {
-        "best": ["ESTP", "ISFP"],
-        "normal": [
-          "ESTJ",
-          "ESFJ",
-          "ISFJ",
-          "ESFP",
-          "ENTP",
-          "ENFJ",
-          "INFJ",
-          "ENFP",
-          "INFP"
+        "best": [
+          'ISFJ',
+          'ISTJ',
         ],
-        "bad": ["ISTJ", "ISTP", "ENTJ", "INTJ", "INTP"],
+        "good": [],
+        "normal": [
+          'INTJ',
+          'ENTJ',
+          'INTP',
+          'ENTP',
+          'ESFJ',
+          'ESTJ',
+        ],
+        "not bad": [
+          'ISFP',
+          'ESFP',
+          'ISTP',
+          'ESTP',
+        ],
+        "bad": [
+          'INFP',
+          'ENFP',
+          'INFJ',
+          'ENFJ',
+        ],
       },
       "type": "탐험가형",
       "character": "Entertainer",
@@ -750,6 +916,14 @@ class Mbtis {
         "틀에 박힌 것 싫어하고, 계획에 따라 하는 것 힘들어한다",
       ]
     },
+  };
+
+  static const Map<String, Color> EmojiColor = {
+    "best": Colors.blue,
+    "good": Colors.green,
+    "normal": Colors.yellow,
+    "not bad": Colors.orange,
+    "bad": Colors.red,
   };
 
   static const Map<String, List> TypesGroupBy = {

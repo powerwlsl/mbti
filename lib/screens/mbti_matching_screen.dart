@@ -17,7 +17,6 @@ class MbtiMatchingScreen extends StatefulWidget {
 class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
   @override
   String _result;
-  Color resultColor;
 
   Widget build(BuildContext context) {
     String mbti_1 = widget.prefs.getString('mbti_1');
@@ -33,14 +32,6 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
         setState(() {
           _result = Mbtis.getResult(mbti_1, mbti_2);
         });
-
-        if (_result == "best") {
-          resultColor = Colors.green;
-        } else if (_result == "normal") {
-          resultColor = Colors.orange;
-        } else {
-          resultColor = Colors.red;
-        }
       });
     }
 
@@ -61,12 +52,12 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
                     if (_result != null)
                       Image.asset(
                         'images/$_result.png',
-                        color: resultColor,
+                        color: Mbtis.EmojiColor[_result],
                       ),
                     if (_result != null)
                       Text(_result.toUpperCase(),
                           style: kPrimaryTextStyle.copyWith(
-                            color: resultColor,
+                            color: Mbtis.EmojiColor[_result],
                           )),
                   ],
                 ),

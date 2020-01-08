@@ -57,7 +57,9 @@ class _MainScreenState extends State<MainScreen> {
         ),
         SliverToBoxAdapter(
           child: MatchingMbtiList(
-              selectedMbtiType: myMbtiType, selectedMbtiHash: myMbti),
+            selectedMbtiType: myMbtiType,
+            selectedMbtiHash: myMbti,
+          ),
         ),
         SliverToBoxAdapter(
           child: SizedBox(

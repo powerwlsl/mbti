@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mbti/constants.dart';
+import 'package:mbti/models/mbtis.dart';
 
 class MatchingMbtiList extends StatelessWidget {
-  const MatchingMbtiList({
-    Key key,
+  MatchingMbtiList({
     @required this.selectedMbtiType,
     @required this.selectedMbtiHash,
-  }) : super(key: key);
+  });
 
   final String selectedMbtiType;
   final Map selectedMbtiHash;
@@ -28,72 +28,47 @@ class MatchingMbtiList extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Image.asset(
-                    'images/best.png',
-                    width: 30,
-                    color: Colors.green,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: Text(
-                      selectedMbtiHash["matching"]["best"].join(', '),
-                      style: kPrimarySmallTextStyle,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 5,
-              ),
-//                    TODO make each mbti clickable?
-              Row(
-                children: <Widget>[
-                  Image.asset(
-                    'images/normal.png',
-                    width: 30,
-                    color: Colors.orange,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: Text(
-                      selectedMbtiHash["matching"]["normal"].join(', '),
-                      style: kPrimarySmallTextStyle,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                children: <Widget>[
-                  Image.asset(
-                    'images/bad.png',
-                    width: 30,
-                    color: Colors.red,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: Text(
-                      selectedMbtiHash["matching"]["bad"].join(', '),
-                      style: kPrimarySmallTextStyle,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+            children: selectedMbtiHash["matching"]
+                .keys
+                .map<Widget>((key) => MatchingRateRow(
+                      result: key,
+                      mbtis: selectedMbtiHash["matching"][key],
+                    ))
+                .toList(),
           ),
         ),
       ],
+    );
+  }
+}
+
+class MatchingRateRow extends StatelessWidget {
+  MatchingRateRow({this.result, this.mbtis});
+  final String result;
+  final List<String> mbtis;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 5),
+      child: Row(
+        children: <Widget>[
+          Image.asset(
+            'images/$result.png',
+            width: 30,
+            color: Mbtis.EmojiColor[result],
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Flexible(
+            child: Text(
+              mbtis.join(', '),
+              style: kPrimarySmallTextStyle,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
