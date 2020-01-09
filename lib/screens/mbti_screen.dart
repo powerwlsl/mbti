@@ -13,7 +13,6 @@ class MbtiScreen extends StatefulWidget {
 class _MbtiScreenState extends State<MbtiScreen> {
   @override
   Widget build(BuildContext context) {
-    print(widget.type);
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(

@@ -16,10 +16,8 @@ class _LandingScreenState extends State<LandingScreen> {
     if (widget.prefs.getString('uuid') == null) {
       widget.prefs.setString('uuid', Uuid().v4());
     }
-    print(widget.prefs.getString('uuid'));
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(

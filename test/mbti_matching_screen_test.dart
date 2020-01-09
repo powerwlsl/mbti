@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  Widget TestableWidget({Widget child}) {
+  Widget testableWidget({Widget child}) {
     return MaterialApp(
       home: child,
     );
@@ -16,7 +16,7 @@ void main() {
     SharedPreferences.setMockInitialValues({}); //set values here
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await tester
-        .pumpWidget(TestableWidget(child: MbtiMatchingScreen(prefs: prefs)));
+        .pumpWidget(testableWidget(child: MbtiMatchingScreen(prefs: prefs)));
 
     expect(
         tester.widget<FlatButton>(find.byKey(Key('seeResultButton'))).enabled,
@@ -29,7 +29,7 @@ void main() {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     await tester
-        .pumpWidget(TestableWidget(child: MbtiMatchingScreen(prefs: prefs)));
+        .pumpWidget(testableWidget(child: MbtiMatchingScreen(prefs: prefs)));
     await tester.tap(find.byKey(Key('mbti_1')));
     await tester.pump(const Duration(seconds: 1));
 
@@ -53,7 +53,7 @@ void main() {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     await tester
-        .pumpWidget(TestableWidget(child: MbtiMatchingScreen(prefs: prefs)));
+        .pumpWidget(testableWidget(child: MbtiMatchingScreen(prefs: prefs)));
     await tester.tap(find.byKey(Key('mbti_1')));
     await tester.pump(const Duration(seconds: 1));
 

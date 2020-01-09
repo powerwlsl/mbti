@@ -31,7 +31,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
 
   List<String> genderList = ["남성", "여성"];
   List<String> ageRangeList = [
-    for (var i = 1930; i < 2020; i += 1) i.toString()
+    for (var i = 2020; i > 1930; i -= 1) i.toString()
   ];
 
   List<DropdownMenuItem<String>> dropdownListItem(List<String> itemList) {
@@ -50,6 +50,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     prefs.setString('age', age);
     prefs.setString('gender', gender);
     _saveInFirestore();
+
     if (widget.isLandingPage) {
       Navigator.pushReplacementNamed(
         context,
