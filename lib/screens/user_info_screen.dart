@@ -8,6 +8,8 @@ import 'package:mbti/main.dart';
 import 'package:mbti/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_info/device_info.dart';
+import 'dart:io' show Platform;
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -28,6 +30,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   String gender;
   Map mbtis = Mbtis.Types;
   final _firestore = Firestore.instance;
+  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+  String documentId;
 
   List<String> genderList = ["남성", "여성"];
   List<String> ageRangeList = [
@@ -70,10 +74,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   }
 
   void _saveInFirestore() {
-    _firestore
-        .collection('userData')
-        .document(widget.prefs.getString('uuid'))
-        .setData({
+    print(documentId);
+    _firestore.collection('userData').document(documentId).setData({
       'mbti': mbtiType,
       'age': age,
       'gender': gender,
@@ -93,9 +95,26 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   @override
   void initState() {
     super.initState();
+    _getDeviceInfo();
     mbtiType = widget.prefs.getString('mbtiType');
     age = widget.prefs.getString('age');
     gender = widget.prefs.getString('gender');
+  }
+
+  _getDeviceInfo() async {
+    try {
+      if (Platform.isAndroid) {
+        AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+        documentId = androidInfo.androidId;
+      } else if (Platform.isIOS) {
+        IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+        documentId = iosInfo.identifierForVendor;
+        print(deviceInfo);
+      }
+    } on Exception catch (e) {
+      print(e);
+      print('Failed to get platform version');
+    }
   }
 
   @override

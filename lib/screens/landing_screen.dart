@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mbti/screens/user_info_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uuid/uuid.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -11,13 +10,6 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
-  @override
-  void initState() {
-    if (widget.prefs.getString('uuid') == null) {
-      widget.prefs.setString('uuid', Uuid().v4());
-    }
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
