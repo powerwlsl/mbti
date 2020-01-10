@@ -680,7 +680,6 @@ class Mbtis {
           'ESFJ',
           'ESTJ',
         ],
-        "good": [],
         "normal": [
           'INTJ',
           'ENTJ',
@@ -745,7 +744,6 @@ class Mbtis {
           'ESFJ',
           'ESTJ',
         ],
-        "good": [],
         "normal": [
           'INTJ',
           'ENTJ',
@@ -870,7 +868,6 @@ class Mbtis {
           'ISFJ',
           'ISTJ',
         ],
-        "good": [],
         "normal": [
           'INTJ',
           'ENTJ',
@@ -936,6 +933,14 @@ class Mbtis {
     "Sentinels": ["ISTJ", "ISFJ", "ESTJ", "ESFJ"],
     "Explorers": ["ISTP", "ISFP", "ESTP", "ESFP"],
   };
+
+  static const List<String> MatchingResults = [
+    'best',
+    'good',
+    'normal',
+    'not_bad',
+    'bad'
+  ];
 
   static String getResult(String mbti_1, String mbti_2) {
     String matchingKey;

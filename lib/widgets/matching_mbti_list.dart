@@ -33,7 +33,30 @@ class MatchingMbtiList extends StatelessWidget {
                 MatchingRateRow(
                   result: item,
                   selectedMbtiHash: selectedMbtiHash,
-                )
+                ),
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                child: Row(
+                  children: <Widget>[
+                    for (var result in Mbtis.MatchingResults)
+                      Row(
+                        children: <Widget>[
+                          Image.asset(
+                            'images/$result.png',
+                            width: 15,
+                            color: Mbtis.EmojiColor[result],
+                          ),
+                          SizedBox(width: 2),
+                          Text(
+                            result.replaceAll("_", " ").toUpperCase(),
+                            style: kSecondarySmallTextStyle,
+                          ),
+                          SizedBox(width: 5),
+                        ],
+                      )
+                  ],
+                ),
+              ),
             ],
           ),
         ),

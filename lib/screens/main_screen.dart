@@ -31,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
                   padding: const EdgeInsets.only(right: 20),
                   child: Column(
                     children: <Widget>[
-                      Text(
+                      const Text(
                         "My MBTI",
                         style: kSecondaryTextStyle,
                       ),
