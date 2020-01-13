@@ -1,4 +1,4 @@
-package me.hyejinahn.mbti
+package com.hyejinahn.mbti
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
