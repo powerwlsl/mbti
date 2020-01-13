@@ -7,9 +7,9 @@ import 'package:mbti/widgets/custom_primary_flat_button.dart';
 import 'package:mbti/main.dart';
 import 'package:mbti/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info/device_info.dart';
 import 'dart:io' show Platform;
+import 'package:http/http.dart' as http;
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -29,9 +29,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   String age;
   String gender;
   Map mbtis = Mbtis.Types;
-  final _firestore = Firestore.instance;
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  String documentId;
+  String deviceId;
 
   List<String> genderList = ["남성", "여성"];
   List<String> ageRangeList = [
@@ -53,8 +52,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     prefs.setString('mbtiType', mbtiType);
     prefs.setString('age', age);
     prefs.setString('gender', gender);
-    _saveInFirestore();
 
+    _saveInFirestore();
     if (widget.isLandingPage) {
       Navigator.pushReplacementNamed(
         context,
@@ -73,13 +72,21 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     }
   }
 
-  void _saveInFirestore() {
-    print(documentId);
-    _firestore.collection('userData').document(documentId).setData({
-      'mbti': mbtiType,
-      'age': age,
-      'gender': gender,
-    });
+  _saveInFirestore() async {
+    print(deviceId);
+    var client = http.Client();
+    try {
+      var uriResponse = await client.post(
+          'https://mbti-api-hyejin.herokuapp.com/user/$deviceId/update',
+          body: {
+            'mbti': mbtiType,
+            'age': age,
+            'gender': gender,
+          });
+      print(uriResponse.statusCode);
+    } finally {
+      client.close();
+    }
   }
 
   _launchURL() async {
@@ -105,11 +112,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     try {
       if (Platform.isAndroid) {
         AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-        documentId = androidInfo.androidId;
+        deviceId = androidInfo.androidId;
       } else if (Platform.isIOS) {
         IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-        documentId = iosInfo.identifierForVendor;
-        print(deviceInfo);
+        deviceId = iosInfo.identifierForVendor;
       }
     } on Exception catch (e) {
       print(e);
