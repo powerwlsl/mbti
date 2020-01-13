@@ -6,6 +6,7 @@ import 'package:mbti/screens/mbti_list_screen.dart';
 import 'package:mbti/screens/mbti_matching_screen.dart';
 import 'package:mbti/screens/user_info_screen.dart';
 import 'package:mbti/screens/landing_screen.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,9 +22,12 @@ class MyApp extends StatelessWidget {
   MyApp({this.prefs});
 
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'MBTI',
         theme: ThemeData(
           primarySwatch: Colors.cyan,
           iconTheme: IconThemeData(

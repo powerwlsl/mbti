@@ -19,7 +19,7 @@ class MatchingMbtiList extends StatelessWidget {
           width: double.infinity,
           margin: EdgeInsets.all(20),
           child: Text(
-            "$selectedMbtiType의 궁합",
+            "$selectedMbtiType 궁합",
 //            textAlign: TextAlign.center,
             style: kPrimaryMediumTextStyle.copyWith(color: Color(0xFF305675)),
           ),
@@ -46,12 +46,13 @@ class MatchingMbtiList extends StatelessWidget {
                             width: 15,
                             color: Mbtis.EmojiColor[result],
                           ),
-                          SizedBox(width: 2),
+                          SizedBox(width: 5),
                           Text(
                             result.replaceAll("_", " ").toUpperCase(),
-                            style: kSecondarySmallTextStyle,
+                            style: kSecondarySmallTextStyle.copyWith(
+                                fontWeight: FontWeight.normal, fontSize: 10),
                           ),
-                          SizedBox(width: 5),
+                          SizedBox(width: 10),
                         ],
                       )
                   ],
