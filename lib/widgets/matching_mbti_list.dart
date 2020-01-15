@@ -37,6 +37,7 @@ class MatchingMbtiList extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 20),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     for (var result in Mbtis.MatchingResults)
                       Row(

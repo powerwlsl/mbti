@@ -76,18 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
     prefs = widget.prefs;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          _getTitle(currentPage),
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.cyan,
-        elevation: 0.0,
-      ),
-      body: Container(
-        decoration: BoxDecoration(color: Colors.white),
-        child: Center(
-          child: _getPage(currentPage),
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          child: Center(
+            child: _getPage(currentPage),
+          ),
         ),
       ),
       bottomNavigationBar: FancyBottomNavigation(
@@ -130,19 +124,6 @@ class _MyHomePageState extends State<MyHomePage> {
         return MbtiMatchingScreen(prefs: prefs);
       default:
         return UserInfoScreen(prefs: prefs);
-    }
-  }
-
-  _getTitle(int page) {
-    switch (page) {
-      case 0:
-        return "나의 MBTI";
-      case 1:
-        return "MBTI 성격유형";
-      case 2:
-        return "MBTI 궁합";
-      default:
-        return "설정";
     }
   }
 }
