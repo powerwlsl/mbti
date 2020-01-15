@@ -11,6 +11,7 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
+// TODO share button
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
@@ -81,7 +82,6 @@ class _MainScreenState extends State<MainScreen> {
           delegate: SliverChildBuilderDelegate(
             (context, index) => Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color: index.isEven ? Color(0xFFF4F4F4) : Color(0xFFE5EBF0),
                 borderRadius: BorderRadius.circular(5),

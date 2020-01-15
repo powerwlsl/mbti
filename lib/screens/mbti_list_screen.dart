@@ -18,7 +18,7 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
         itemCount: Mbtis.Types.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
-          childAspectRatio: 4 / 6,
+          childAspectRatio: 2 / 3,
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
