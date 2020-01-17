@@ -8,6 +8,7 @@ import 'package:mbti/screens/user_info_screen.dart';
 import 'package:mbti/screens/landing_screen.dart';
 import 'package:flutter/services.dart';
 
+// TODO safearea bottom for iphone x
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: Colors.white,
           ),
+          fontFamily: 'NanumSquareRound',
           buttonTheme: ButtonThemeData(
             buttonColor:
                 Color(0xffff914d), // Background color (orange in my case).

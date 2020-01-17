@@ -23,38 +23,38 @@ class _MainScreenState extends State<MainScreen> {
         SliverToBoxAdapter(
           key: Key('mainScreenPage'),
           child: Container(
-            child: Card(
-              elevation: 3,
-              margin: EdgeInsets.all(20),
-              child: ListTile(
-                contentPadding: EdgeInsets.all(20),
-                leading: Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Column(
-                    children: <Widget>[
-                      const Text(
-                        "My MBTI",
-                        style: kSecondaryTextStyle,
-                      ),
-                      Text(
-                        myMbtiType,
-                        style: kPrimaryTextStyle.copyWith(
-                          color: Color(myMbti["color"]),
+              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              height: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Color(myMbti["color"]),
+                    child: Image.asset(
+                      'images/${myMbti["character"]}.png',
+                      color: Colors.white,
+                      height: 50,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          myMbtiType,
+                          style: kPrimaryMediumTextStyle,
                         ),
-                      ),
-                    ],
+                        SizedBox(width: 20),
+                        Flexible(child: Text(myMbti["summary"])),
+                      ],
+                    ),
                   ),
-                ),
-                title: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Text(
-                    myMbti["character_ko"],
-                  ),
-                ),
-                subtitle: Text(myMbti["summary"]),
-              ),
-            ),
-          ),
+                ],
+              )),
         ),
         SliverToBoxAdapter(
           child: MatchingMbtiList(
