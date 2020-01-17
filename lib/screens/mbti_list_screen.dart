@@ -10,6 +10,7 @@ class MbtiListScreen extends StatefulWidget {
   _MbtiListScreenState createState() => _MbtiListScreenState();
 }
 
+// TODO hero effect for the mbti icons
 class _MbtiListScreenState extends State<MbtiListScreen> {
   @override
   Widget build(BuildContext context) {
