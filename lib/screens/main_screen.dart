@@ -25,54 +25,100 @@ class _MainScreenState extends State<MainScreen> {
       slivers: <Widget>[
         SliverToBoxAdapter(
           key: Key('mainScreenPage'),
-          child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xffE2F2FF),
-              ),
-              padding:
-                  EdgeInsets.only(right: 20, left: 20, top: 20, bottom: 10),
-              height: 200,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
+          child: Card(
+            elevation: 3,
+            margin: EdgeInsets.all(10),
+            child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                padding: EdgeInsets.all(20),
+                // height: 200,
+                child: Column(
+                  children: <Widget>[
+                    Row(
                       children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Colors.white,
-                              child: Image.asset(
-                                'images/${myMbti["character"]}.png',
-                                color: Color(myMbti["color"]),
-                                height: 30,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 7,
-                            ),
-                            Text(
-                              myMbtiType,
-                              style: kPrimaryMediumTextStyle,
-                            ),
-                          ],
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color(myMbti["color"]),
+                          child: Image.asset(
+                            'images/${myMbti["character"]}.png',
+                            color: Colors.white,
+                            height: 30,
+                          ),
                         ),
-                        SizedBox(width: 20),
+                        SizedBox(
+                          width: 20,
+                        ),
                         Flexible(
-                            child: Text(
-                          myMbti["summary"],
-                          style: TextStyle(fontSize: 17),
-                        )),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                myMbtiType,
+                                style: kPrimaryMediumTextStyle,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                myMbti["character_ko"],
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  ),
-                ],
-              )),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Divider(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(myMbti["summary"], style: TextStyle(fontSize: 15))
+                  ],
+                )
+
+                // Column(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: <Widget>[
+                //     CircleAvatar(
+                //       radius: 40,
+                //       backgroundColor: Color(myMbti["color"]),
+                //       child: Image.asset(
+                //         'images/${myMbti["character"]}.png',
+                //         color: Colors.white,
+                //         height: 40,
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       height: 20,
+                //     ),
+                //     Padding(
+                //       padding: const EdgeInsets.symmetric(horizontal: 10),
+                //       child: Row(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: <Widget>[
+                //           Text(
+                //             myMbtiType,
+                //             style: kPrimaryMediumTextStyle,
+                //           ),
+                //           SizedBox(width: 20),
+                //           Flexible(
+                //               child: Text(
+                //             myMbti["summary"],
+                //             style: TextStyle(fontSize: 15),
+                //           ),),
+                //         ],
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                ),
+          ),
         ),
         SliverToBoxAdapter(
           child: SizedBox(height: 20),

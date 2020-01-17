@@ -19,7 +19,7 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
         itemCount: Mbtis.Types.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
-          childAspectRatio: 2 / 3,
+          childAspectRatio: 1,
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
@@ -45,38 +45,47 @@ class MbtiGridListItem extends StatelessWidget {
           MaterialPageRoute(builder: (context) => MbtiScreen(type)),
         );
       },
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              'images/${Mbtis.Types[type]["character"]}.png',
-              height: 40,
-              width: 40,
-              color: Color(Mbtis.Types[type]["color"]),
-            ),
-            Center(
-              child: Text(
-                type,
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Color(Mbtis.Types[type]["color"]),
-                  fontWeight: FontWeight.bold,
+      child: Card(
+        color: Color(Mbtis.Types[type]["color"]),
+        margin: EdgeInsets.all(0),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 3),
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                'images/${Mbtis.Types[type]["character"]}.png',
+                height: 35,
+                color: Colors.white,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Center(
+                child: Text(
+                  type,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            Flexible(
-              child: Text(
-                Mbtis.Types[type]["character_ko"],
-                style: kSecondarySmallTextStyle.copyWith(
-                  fontSize: 10,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ],
+              // SizedBox(
+              //   height: 3,
+              // ),
+              // Flexible(
+              //   child: Text(
+              //     Mbtis.Types[type]["character_ko"],
+              //     style: kSecondarySmallTextStyle.copyWith(
+              //         fontSize: 10, color: Colors.white),
+              //     textAlign: TextAlign.center,
+              //   ),
+              // ),
+            ],
+          ),
         ),
       ),
     );

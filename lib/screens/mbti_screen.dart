@@ -15,6 +15,7 @@ class _MbtiScreenState extends State<MbtiScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Color(0xfffafafa),
           // iconTheme: IconThemeData(
           //   color: Colors.white,
           // ),
