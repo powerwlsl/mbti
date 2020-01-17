@@ -30,14 +30,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'MBTI',
         theme: ThemeData(
-          primarySwatch: Colors.cyan,
+          primaryColor: Colors.white,
           iconTheme: IconThemeData(
             color: Colors.white,
           ),
           fontFamily: 'NanumSquareRound',
           buttonTheme: ButtonThemeData(
-            buttonColor:
-                Color(0xffff914d), // Background color (orange in my case).
+            // buttonColor: MyColors.blue[500],
             textTheme: ButtonTextTheme.accent,
             colorScheme: Theme.of(context)
                 .colorScheme
@@ -78,15 +77,20 @@ class _MyHomePageState extends State<MyHomePage> {
     prefs = widget.prefs;
 
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(color: Colors.white),
-          child: Center(
-            child: _getPage(currentPage),
-          ),
+      appBar: AppBar(
+        backgroundColor: Color(0xfffafafa),
+        title: Text(
+          _getTitle(currentPage),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        elevation: 0.0,
+      ),
+      body: Center(
+        child: _getPage(currentPage),
       ),
       bottomNavigationBar: FancyBottomNavigation(
+        circleColor: Color(0xff259ef9),
+        inactiveIconColor: Color(0xffbcdcf4),
         tabs: [
           TabData(
             iconData: Icons.home,
@@ -126,6 +130,19 @@ class _MyHomePageState extends State<MyHomePage> {
         return MbtiMatchingScreen(prefs: prefs);
       default:
         return UserInfoScreen(prefs: prefs);
+    }
+  }
+
+  _getTitle(int page) {
+    switch (page) {
+      case 0:
+        return "나의 MBTI";
+      case 1:
+        return "MBTI 성격유형";
+      case 2:
+        return "MBTI 궁합";
+      default:
+        return "설정";
     }
   }
 }

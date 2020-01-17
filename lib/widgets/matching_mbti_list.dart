@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mbti/constants.dart';
 import 'package:mbti/models/mbtis.dart';
+import 'package:mbti/widgets/expand_title_container.dart';
 
-class MatchingMbtiList extends StatelessWidget {
+class MatchingMbtiList extends StatefulWidget {
   MatchingMbtiList({
     @required this.selectedMbtiType,
     @required this.selectedMbtiHash,
@@ -12,56 +13,42 @@ class MatchingMbtiList extends StatelessWidget {
   final Map selectedMbtiHash;
 
   @override
+  _MatchingMbtiListState createState() => _MatchingMbtiListState();
+}
+
+class _MatchingMbtiListState extends State<MatchingMbtiList> {
+  @override
+  bool _expanded = false;
+
   Widget build(BuildContext context) {
+    void toggleExpand() {
+      setState(() {
+        _expanded = !_expanded;
+      });
+    }
+
     return Column(
       children: <Widget>[
-        Container(
-          width: double.infinity,
-          margin: EdgeInsets.all(20),
-          child: Text(
-            "$selectedMbtiType 궁합",
-//            textAlign: TextAlign.center,
-            style: kPrimaryMediumTextStyle.copyWith(color: Color(0xFF305675)),
-          ),
+        ExpandTitleContainer(
+          title: "궁합",
+          toggleExpand: toggleExpand,
+          expanded: _expanded,
+          icon: Image.asset('images/matching.png', width: 70),
         ),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              for (var item in selectedMbtiHash["matching"].keys)
-                MatchingRateRow(
-                  result: item,
-                  selectedMbtiHash: selectedMbtiHash,
-                ),
-              Container(
-                margin: EdgeInsets.only(top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    for (var result in Mbtis.MatchingResults)
-                      Row(
-                        children: <Widget>[
-                          Image.asset(
-                            'images/$result.png',
-                            width: 15,
-                            color: Mbtis.EmojiColor[result],
-                          ),
-                          SizedBox(width: 5),
-                          Text(
-                            result.replaceAll("_", " ").toUpperCase(),
-                            style: kSecondarySmallTextStyle.copyWith(
-                                fontWeight: FontWeight.normal, fontSize: 10),
-                          ),
-                          SizedBox(width: 10),
-                        ],
-                      )
-                  ],
-                ),
-              ),
-            ],
+        if (_expanded)
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                for (var item in widget.selectedMbtiHash["matching"].keys)
+                  MatchingRateRow(
+                    result: item,
+                    selectedMbtiHash: widget.selectedMbtiHash,
+                  ),
+              ],
+            ),
           ),
-        ),
       ],
     );
   }
@@ -75,14 +62,26 @@ class MatchingRateRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 5),
+      margin: EdgeInsets.only(bottom: 10),
       child: Row(
         children: <Widget>[
-          Image.asset(
-            'images/$result.png',
-            width: 30,
-            color: Mbtis.EmojiColor[result],
-          ),
+          Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+            Image.asset(
+              'images/$result.png',
+              width: 25,
+              color: Mbtis.EmojiColor[result],
+            ),
+            SizedBox(
+              width: 40,
+              child: Center(
+                child: Text(
+                  result.replaceAll('_', ' ').toUpperCase(),
+                  style: kSecondarySmallTextStyle.copyWith(
+                      fontSize: 8, color: Mbtis.EmojiColor[result]),
+                ),
+              ),
+            ),
+          ]),
           SizedBox(
             width: 10,
           ),

@@ -29,13 +29,13 @@ const kSecondarySmallTextStyle = TextStyle(
 );
 
 const kPrimaryTextStyle = TextStyle(
-  fontSize: 30,
+  fontSize: 28,
   color: Colors.black87,
   fontWeight: FontWeight.bold,
 );
 
 const kPrimaryMediumTextStyle = TextStyle(
-  fontSize: 25,
+  fontSize: 20,
   color: Colors.black87,
   fontWeight: FontWeight.bold,
 );
