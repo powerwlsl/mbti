@@ -98,34 +98,23 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         SliverToBoxAdapter(
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            child: Wrap(
-              children: <Widget>[
-                for (var name in myMbti["celebrities_ko"])
-                  Container(
-                    width: 60,
-                    margin: EdgeInsets.only(right: 5, bottom: 5),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        CircleAvatar(
-                          radius: 20,
-                          child: Placeholder(color: Colors.grey),
-                        ),
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Text(
-                          name,
-                          style: kSecondarySmallTextStyle,
-                          // overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ),
-              ],
-            ),
+          child: CelebrityTitle("국내"),
+        ),
+        SliverToBoxAdapter(
+          child: AvatarsWidget(myMbti["celebrities_ko"]),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 20,
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: CelebrityTitle("해외"),
+        ),
+        SliverToBoxAdapter(child: AvatarsWidget(myMbti["celebrities"])),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 20,
           ),
         ),
         DividerWithMargin(),
@@ -157,6 +146,60 @@ class _MainScreenState extends State<MainScreen> {
   }
 }
 
+class AvatarsWidget extends StatelessWidget {
+  AvatarsWidget(this.avatars);
+  final List avatars;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      child: Wrap(
+        children: <Widget>[
+          for (var name in avatars)
+            Container(
+              width: 60,
+              margin: EdgeInsets.only(right: 5, bottom: 5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundImage: AssetImage('images/stars.png'),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    name,
+                    style: kSecondarySmallTextStyle.copyWith(fontSize: 10),
+                    // overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class CelebrityTitle extends StatelessWidget {
+  final String title;
+  CelebrityTitle(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+    );
+  }
+}
+
 class DividerWithMargin extends StatelessWidget {
   const DividerWithMargin({
     Key key,
@@ -168,7 +211,7 @@ class DividerWithMargin extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Divider(
-          color: Colors.grey[300],
+          color: Colors.grey,
         ),
       ),
     );
