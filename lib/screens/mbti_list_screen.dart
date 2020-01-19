@@ -57,7 +57,7 @@ class MbtiGridListItem extends StatelessWidget {
             children: <Widget>[
               Image.asset(
                 'images/${Mbtis.Types[type]["character"]}.png',
-                height: 35,
+                height: 30,
                 color: Colors.white,
               ),
               SizedBox(

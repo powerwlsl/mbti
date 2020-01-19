@@ -18,37 +18,25 @@ class MatchingMbtiList extends StatefulWidget {
 
 class _MatchingMbtiListState extends State<MatchingMbtiList> {
   @override
-  bool _expanded = false;
-
   Widget build(BuildContext context) {
-    void toggleExpand() {
-      setState(() {
-        _expanded = !_expanded;
-      });
-    }
-
     return Column(
       children: <Widget>[
         ExpandTitleContainer(
           title: "궁합",
-          toggleExpand: toggleExpand,
-          expanded: _expanded,
-          icon: Image.asset('images/matching.png', width: 70),
         ),
-        if (_expanded)
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                for (var item in widget.selectedMbtiHash["matching"].keys)
-                  MatchingRateRow(
-                    result: item,
-                    selectedMbtiHash: widget.selectedMbtiHash,
-                  ),
-              ],
-            ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              for (var item in widget.selectedMbtiHash["matching"].keys)
+                MatchingRateRow(
+                  result: item,
+                  selectedMbtiHash: widget.selectedMbtiHash,
+                ),
+            ],
           ),
+        ),
       ],
     );
   }
