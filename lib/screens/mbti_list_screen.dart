@@ -19,7 +19,7 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
         itemCount: Mbtis.Types.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
-          childAspectRatio: 1,
+          childAspectRatio: 0.8,
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
@@ -46,7 +46,7 @@ class MbtiGridListItem extends StatelessWidget {
         );
       },
       child: Card(
-        color: Color(Mbtis.Types[type]["color"]),
+        color: Colors.white,
         margin: EdgeInsets.all(0),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 3),
@@ -58,7 +58,7 @@ class MbtiGridListItem extends StatelessWidget {
               Image.asset(
                 'images/${Mbtis.Types[type]["character"]}.png',
                 height: 30,
-                color: Colors.white,
+                color: Color(Mbtis.Types[type]["color"]),
               ),
               SizedBox(
                 height: 5,
@@ -68,22 +68,21 @@ class MbtiGridListItem extends StatelessWidget {
                   type,
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white,
+                    color: Color(Mbtis.Types[type]["color"]),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: 3,
-              // ),
-              // Flexible(
-              //   child: Text(
-              //     Mbtis.Types[type]["character_ko"],
-              //     style: kSecondarySmallTextStyle.copyWith(
-              //         fontSize: 10, color: Colors.white),
-              //     textAlign: TextAlign.center,
-              //   ),
-              // ),
+              SizedBox(
+                height: 3,
+              ),
+              Flexible(
+                child: Text(
+                  Mbtis.Types[type]["character_ko"],
+                  style: kSecondarySmallTextStyle.copyWith(fontSize: 10),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ],
           ),
         ),

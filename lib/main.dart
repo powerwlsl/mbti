@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
           ),
           fontFamily: 'NanumSquareRound',
           buttonTheme: ButtonThemeData(
-            // buttonColor: MyColors.blue[500],
             textTheme: ButtonTextTheme.accent,
             colorScheme: Theme.of(context)
                 .colorScheme
@@ -89,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _getPage(currentPage),
       ),
       bottomNavigationBar: FancyBottomNavigation(
-        circleColor: Color(0xff259ef9),
+        circleColor: Color(0xff7abae9),
         inactiveIconColor: Color(0xffbcdcf4),
         tabs: [
           TabData(

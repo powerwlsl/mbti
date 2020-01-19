@@ -19,8 +19,6 @@ class _MainScreenState extends State<MainScreen> {
     String myMbtiType = widget.type;
     Map myMbti = Mbtis.Types[myMbtiType];
 
-// FIX add the summary line on mbti list screen
-
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
@@ -101,22 +99,13 @@ class _MainScreenState extends State<MainScreen> {
         ),
         SliverToBoxAdapter(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
+            margin: EdgeInsets.symmetric(horizontal: 10),
             child: Wrap(
               children: <Widget>[
-                for (var i in [
-                  "sth",
-                  "안이요 아아ㅇ",
-                  "dkfj dkf",
-                  "안하하",
-                  "이이나아아",
-                  "ddd",
-                  "dd",
-                  "하하하하하"
-                ])
+                for (var name in myMbti["celebrities_ko"])
                   Container(
                     width: 60,
-                    margin: EdgeInsets.only(right: 5),
+                    margin: EdgeInsets.only(right: 5, bottom: 5),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -128,7 +117,7 @@ class _MainScreenState extends State<MainScreen> {
                           height: 4,
                         ),
                         Text(
-                          "$i",
+                          name,
                           style: kSecondarySmallTextStyle,
                           // overflow: TextOverflow.ellipsis,
                         ),

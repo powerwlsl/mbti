@@ -15,6 +15,7 @@ class CustomPrimaryFlatButton extends StatelessWidget {
     return FlatButton(
       key: Key(keyString),
       onPressed: onPressed,
+
       disabledColor: Color(0xFFE0E0E0),
       padding: EdgeInsets.symmetric(vertical: 15),
       child: Text(
@@ -23,7 +24,8 @@ class CustomPrimaryFlatButton extends StatelessWidget {
           fontSize: 15,
         ),
       ),
-      color: Theme.of(context).accentColor,
+      // color: Theme.of(context).accentColor,
+      color: Color(0xff3898de),
       shape: RoundedRectangleBorder(
         borderRadius: new BorderRadius.circular(50),
       ),
