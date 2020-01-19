@@ -25,7 +25,7 @@ class _MatchingMbtiListState extends State<MatchingMbtiList> {
           title: "궁합",
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

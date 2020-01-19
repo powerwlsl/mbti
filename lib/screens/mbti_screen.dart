@@ -17,6 +17,10 @@ class _MbtiScreenState extends State<MbtiScreen> {
       appBar: AppBar(
         backgroundColor: Color(0xfffafafa),
         elevation: 0,
+        title: Text(
+          widget.type,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: MainScreen(widget.type),
     );

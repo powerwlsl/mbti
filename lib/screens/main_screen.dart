@@ -13,6 +13,7 @@ class MainScreen extends StatefulWidget {
 }
 
 // TODO share button
+// TODO when avatar is empty show default one
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
           key: Key('mainScreenPage'),
           child: Card(
             elevation: 3,
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -101,20 +102,22 @@ class _MainScreenState extends State<MainScreen> {
           child: CelebrityTitle("국내"),
         ),
         SliverToBoxAdapter(
-          child: AvatarsWidget(myMbti["celebrities_ko"]),
+          child: AvatarsWidget(myMbti["celebrities_ko"], '${myMbtiType}'),
         ),
         SliverToBoxAdapter(
           child: SizedBox(
-            height: 20,
+            height: 10,
           ),
         ),
         SliverToBoxAdapter(
           child: CelebrityTitle("해외"),
         ),
-        SliverToBoxAdapter(child: AvatarsWidget(myMbti["celebrities"])),
+        SliverToBoxAdapter(
+          child: AvatarsWidget(myMbti["celebrities"], '${myMbtiType}i'),
+        ),
         SliverToBoxAdapter(
           child: SizedBox(
-            height: 20,
+            height: 10,
           ),
         ),
         DividerWithMargin(),
@@ -147,39 +150,37 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 class AvatarsWidget extends StatelessWidget {
-  AvatarsWidget(this.avatars);
+  AvatarsWidget(this.avatars, this.imageName);
   final List avatars;
-
+  final String imageName;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: Wrap(
-        children: <Widget>[
-          for (var name in avatars)
-            Container(
-              width: 60,
-              margin: EdgeInsets.only(right: 5, bottom: 5),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundImage: AssetImage('images/stars.png'),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    name,
-                    style: kSecondarySmallTextStyle.copyWith(fontSize: 10),
-                    // overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+          children: avatars.asMap().entries.map((MapEntry entry) {
+        return Container(
+          width: 60,
+          margin: EdgeInsets.only(right: 5, bottom: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+                radius: 20,
+                backgroundImage:
+                    AssetImage('images/avatars/${imageName}_${entry.key}.jpg'),
               ),
-            ),
-        ],
-      ),
+              SizedBox(
+                height: 4,
+              ),
+              Text(
+                entry.value,
+                style: kSecondarySmallTextStyle.copyWith(fontSize: 10),
+              ),
+            ],
+          ),
+        );
+      }).toList()),
     );
   }
 }

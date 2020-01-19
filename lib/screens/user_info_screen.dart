@@ -65,7 +65,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     } else {
       Scaffold.of(context).showSnackBar(
         SnackBar(
-          content: Text("Saved!"),
+          content: Text(
+            "저장완료!",
+          ),
+          backgroundColor: Color(0xff3898de),
           duration: Duration(seconds: 2),
         ),
       );
