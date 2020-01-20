@@ -10,7 +10,6 @@ class MbtiListScreen extends StatefulWidget {
   _MbtiListScreenState createState() => _MbtiListScreenState();
 }
 
-// TODO hero effect for the mbti icons
 class _MbtiListScreenState extends State<MbtiListScreen> {
   @override
   Widget build(BuildContext context) {
@@ -63,10 +62,13 @@ class MbtiGridListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                'images/${Mbtis.Types[type]["character"]}.png',
-                height: 30,
-                color: Color(Mbtis.Types[type]["color"]),
+              Hero(
+                tag: type,
+                child: Image.asset(
+                  'images/${Mbtis.Types[type]["character"]}.png',
+                  height: 30,
+                  color: Color(Mbtis.Types[type]["color"]),
+                ),
               ),
               SizedBox(
                 height: 5,

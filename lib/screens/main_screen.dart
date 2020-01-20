@@ -71,6 +71,7 @@ class MbtiCustomScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
@@ -89,12 +90,15 @@ class MbtiCustomScrollView extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Color(myMbti["color"]),
-                        child: Image.asset(
-                          'images/${myMbti["character"]}.png',
-                          color: Colors.white,
-                          height: 30,
+                        radius: 40,
+                        backgroundColor: Colors.white,
+                        child: Hero(
+                          tag: myMbtiType,
+                          child: Image.asset(
+                            'images/${myMbti["character"]}.png',
+                            color: Color(myMbti["color"]),
+                            height: 55,
+                          ),
                         ),
                       ),
                       SizedBox(
