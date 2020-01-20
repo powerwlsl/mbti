@@ -5,6 +5,7 @@ import 'package:mbti/models/mbtis.dart';
 import 'package:mbti/widgets/expand_title_container.dart';
 import 'dart:io';
 import 'package:share/share.dart';
+import 'dart:io' show Platform;
 
 class MainScreen extends StatefulWidget {
   final String type;
@@ -15,14 +16,19 @@ class MainScreen extends StatefulWidget {
 }
 
 // TODO share button
-share(BuildContext context, String mbti) {
-  final RenderBox box = context.findRenderObject();
+// TODO add/fix celebrities suggestion button
+// TODO link preview image
+share(BuildContext context, String summary, String mbti) {
+  String link;
+  if (Platform.isAndroid) {
+    link =
+        "https://play.google.com/store/apps/details?id=com.hyejinahn.mbti&hl=ko";
+  } else if (Platform.isIOS) {
+    link = "https://apps.apple.com/kr/app/mbti/id1494694210";
+  }
 
-  // Share.share("${text}",
-      // subject: "hi",
-      // sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
-      Share.share('저는 ${mbti} 타입입니다. 당신의 MBTI 유형은 무엇인가요?', subject: 'Look what I made!');
-
+  Share.share(
+      '저는 $summary, $mbti 성격유형입니다.😙 \n\n 당신의 MBTI 성격유형은 무엇인가요? \n$link');
 }
 
 class _MainScreenState extends State<MainScreen> {
@@ -38,13 +44,13 @@ class _MainScreenState extends State<MainScreen> {
           "나의 MBTI",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        // TODO elevation?
         elevation: 0,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.share),
             onPressed: () {
-              share(context, "hyejin" );
+              share(context, myMbti['summary'].toString().replaceAll(".", ""),
+                  myMbtiType);
             },
           )
         ],

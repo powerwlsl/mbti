@@ -5,6 +5,8 @@ import 'package:mbti/widgets/custom_primary_flat_button.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:mbti/widgets/custom_dropdown_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:share/share.dart';
+import 'dart:io' show Platform;
 
 class MbtiMatchingScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -14,6 +16,51 @@ class MbtiMatchingScreen extends StatefulWidget {
   _MbtiMatchingScreenState createState() => _MbtiMatchingScreenState();
 }
 
+share(BuildContext context, String mbti_1, String mbti_2, String _result) {
+  String link = '';
+  String result = '';
+  if (Platform.isAndroid) {
+    link =
+        "https://play.google.com/store/apps/details?id=com.hyejinahn.mbti&hl=ko";
+  } else if (Platform.isIOS) {
+    link = "https://apps.apple.com/kr/app/mbti/id1494694210";
+  }
+  switch (_result) {
+    case "best":
+      {
+        result = "최고에요 🥰";
+      }
+      break;
+
+    case "good":
+      {
+        result = "좋아요 😊";
+      }
+      break;
+
+    case "normal":
+      {
+        result = "괜찮아요 🙂";
+      }
+      break;
+
+    case "not_bad":
+      {
+        result = "나쁘지 않아요 🙃";
+      }
+      break;
+
+    case "bad":
+      {
+        result = "별로에요 😟";
+      }
+      break;
+  }
+  Share.share(
+      '$mbti_1와 $mbti_2의 궁합은? \n결과: $result \n\n다른 MBTI간의 궁합을 보고싶다면?\n$link');
+}
+
+// TODO show the result if mbti1 and 2 already exist
 class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
   @override
   String _result;
@@ -44,10 +91,13 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.share),
-            onPressed: () {},
-          )
+          if (_result != null)
+            IconButton(
+              icon: Icon(Icons.share),
+              onPressed: () {
+                share(context, mbti_1, mbti_2, _result);
+              },
+            )
         ],
       ),
       body: Container(
