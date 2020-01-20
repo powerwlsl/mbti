@@ -10,6 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:device_info/device_info.dart';
 import 'dart:io' show Platform;
 import 'package:http/http.dart' as http;
+import 'package:mbti/widgets/app_drawer.dart';
 
 class UserInfoScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -137,6 +138,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
+      drawer: widget.isLandingPage ? null : AppDrawer(),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -208,7 +210,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                             : null,
                         "저장",
                         'saveButton',
-                      )
+                      ),
                     ],
                   )),
             ),

@@ -7,6 +7,7 @@ import 'package:mbti/widgets/custom_dropdown_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:share/share.dart';
 import 'dart:io' show Platform;
+import 'package:mbti/widgets/app_drawer.dart';
 
 class MbtiMatchingScreen extends StatefulWidget {
   final SharedPreferences prefs;
@@ -92,6 +93,7 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
     }
 
     return Scaffold(
+      drawer: AppDrawer(),
       appBar: AppBar(
         backgroundColor: Color(0xfffafafa),
         elevation: 0,

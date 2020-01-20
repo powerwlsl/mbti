@@ -4,6 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:mbti/constants.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:mbti/screens/mbti_screen.dart';
+import 'package:mbti/widgets/app_drawer.dart';
 
 class MbtiListScreen extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: AppDrawer(),
       appBar: AppBar(
         backgroundColor: Color(0xfffafafa),
         title: Text(

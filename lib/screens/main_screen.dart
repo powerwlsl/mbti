@@ -6,6 +6,7 @@ import 'package:mbti/widgets/expand_title_container.dart';
 import 'dart:io';
 import 'package:share/share.dart';
 import 'dart:io' show Platform;
+import 'package:mbti/widgets/app_drawer.dart';
 
 class MainScreen extends StatefulWidget {
   final String type;
@@ -15,6 +16,8 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
+// TODO Rate popup
+// TODO suggestion/support email
 // TODO add/fix celebrities suggestion button
 // TODO link preview image
 share(BuildContext context, String summary, String mbti) {
@@ -37,6 +40,7 @@ class _MainScreenState extends State<MainScreen> {
     Map myMbti = Mbtis.Types[myMbtiType];
 
     return Scaffold(
+      drawer: AppDrawer(),
       appBar: AppBar(
         backgroundColor: Color(0xfffafafa),
         title: Text(
@@ -71,7 +75,6 @@ class MbtiCustomScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
