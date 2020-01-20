@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:mbti/screens/main_screen.dart';
+import 'package:mbti/models/mbtis.dart';
 
 class MbtiScreen extends StatefulWidget {
   final String type;
@@ -21,8 +21,17 @@ class _MbtiScreenState extends State<MbtiScreen> {
           widget.type,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.share),
+            onPressed: () {},
+          )
+        ],
       ),
-      body: MainScreen(widget.type),
+      body: MbtiCustomScrollView(
+        myMbti: Mbtis.Types[widget.type],
+        myMbtiType: widget.type,
+      ),
     );
   }
 }

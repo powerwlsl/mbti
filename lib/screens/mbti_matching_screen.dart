@@ -36,6 +36,20 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xfffafafa),
+        elevation: 0,
+        title: Text(
+          "MBTI 궁합",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.share),
+            onPressed: () {},
+          )
+        ],
+      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(

@@ -4,6 +4,7 @@ import 'package:mbti/constants.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:mbti/widgets/expand_title_container.dart';
 import 'dart:io';
+import 'package:share/share.dart';
 
 class MainScreen extends StatefulWidget {
   final String type;
@@ -14,12 +15,57 @@ class MainScreen extends StatefulWidget {
 }
 
 // TODO share button
+share(BuildContext context, String mbti) {
+  final RenderBox box = context.findRenderObject();
+
+  // Share.share("${text}",
+      // subject: "hi",
+      // sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+      Share.share('저는 ${mbti} 타입입니다. 당신의 MBTI 유형은 무엇인가요?', subject: 'Look what I made!');
+
+}
+
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     String myMbtiType = widget.type;
     Map myMbti = Mbtis.Types[myMbtiType];
 
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xfffafafa),
+        title: Text(
+          "나의 MBTI",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        // TODO elevation?
+        elevation: 0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.share),
+            onPressed: () {
+              share(context, "hyejin" );
+            },
+          )
+        ],
+      ),
+      body: MbtiCustomScrollView(myMbti: myMbti, myMbtiType: myMbtiType),
+    );
+  }
+}
+
+class MbtiCustomScrollView extends StatelessWidget {
+  const MbtiCustomScrollView({
+    Key key,
+    @required this.myMbti,
+    @required this.myMbtiType,
+  }) : super(key: key);
+
+  final Map myMbti;
+  final String myMbtiType;
+
+  @override
+  Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(

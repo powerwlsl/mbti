@@ -15,6 +15,14 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xfffafafa),
+        title: Text(
+          "MBTI 유형",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        elevation: 0,
+      ),
       body: GridView.builder(
         itemCount: Mbtis.Types.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

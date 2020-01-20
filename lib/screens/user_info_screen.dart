@@ -127,6 +127,14 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xfffafafa),
+        elevation: 0,
+        title: Text(
+          "설정",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
