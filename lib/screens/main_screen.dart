@@ -229,7 +229,7 @@ class AvatarsWidget extends StatelessWidget {
           children: avatars.asMap().entries.map((MapEntry entry) {
         return Container(
           width: 60,
-          margin: EdgeInsets.only(right: 5, bottom: 20),
+          margin: EdgeInsets.only(right: 2, bottom: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -256,15 +256,25 @@ class AvatarsWidget extends StatelessWidget {
 class CelebrityTitle extends StatelessWidget {
   final String title;
   CelebrityTitle(this.title);
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(
-        title,
-        style: TextStyle(fontWeight: FontWeight.bold),
+      child: Row(
+        children: <Widget>[
+          Text(
+            title,
+            style: kSecondarySmallTextStyle,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+              child: Divider(
+            color: Colors.grey,
+          )),
+        ],
       ),
-      margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      margin: EdgeInsets.only(right: 20, left: 20, bottom: 20),
     );
   }
 }
