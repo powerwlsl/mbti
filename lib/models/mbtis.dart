@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class Mbtis {
   static const Map<String, Map> Types = {
-//    TODO 닷 빠진거 추가하기
     "INTJ": {
       "celebrities_ko": ["공민지", "강동원", "다원"],
       "celebrities": [

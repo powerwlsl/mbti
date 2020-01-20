@@ -77,7 +77,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
 
   _saveInFirestore() async {
     var client = http.Client();
-    // TODO: add created_at
     try {
       var uriResponse = await client.post(
           'https://mbti-api-hyejin.herokuapp.com/user/$deviceId/update',

@@ -3,6 +3,7 @@ import 'package:mbti/widgets/matching_mbti_list.dart';
 import 'package:mbti/constants.dart';
 import 'package:mbti/models/mbtis.dart';
 import 'package:mbti/widgets/expand_title_container.dart';
+import 'dart:io';
 
 class MainScreen extends StatefulWidget {
   final String type;
@@ -13,7 +14,6 @@ class MainScreen extends StatefulWidget {
 }
 
 // TODO share button
-// TODO when avatar is empty show default one
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
@@ -135,24 +135,36 @@ class _MainScreenState extends State<MainScreen> {
                 borderRadius: BorderRadius.circular(5),
               ),
               child: ListTile(
-                title: Text(
-                  myMbti["details"][index],
+                title: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  child: Text(
+                    myMbti["details"][index],
+                  ),
                 ),
               ),
             ),
             childCount: myMbti["details"].length,
           ),
         ),
-        DividerWithMargin(),
       ],
     );
   }
+}
+
+getImage(path) {
+  if (FileSystemEntity.typeSync(path) != FileSystemEntityType.notFound) {
+    return AssetImage('images/user.png');
+  } else {
+    return AssetImage(path);
+  }
+  ;
 }
 
 class AvatarsWidget extends StatelessWidget {
   AvatarsWidget(this.avatars, this.imageName);
   final List avatars;
   final String imageName;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -168,7 +180,7 @@ class AvatarsWidget extends StatelessWidget {
               CircleAvatar(
                 radius: 20,
                 backgroundImage:
-                    AssetImage('images/avatars/${imageName}_${entry.key}.jpg'),
+                    getImage('images/avatars/${imageName}_${entry.key}.jpg'),
               ),
               SizedBox(
                 height: 4,
