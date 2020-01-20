@@ -60,10 +60,19 @@ share(BuildContext context, String mbti_1, String mbti_2, String _result) {
       '$mbti_1와 $mbti_2의 궁합은? \n결과: $result \n\n다른 MBTI간의 궁합을 보고싶다면?\n$link');
 }
 
-// TODO show the result if mbti1 and 2 already exist
 class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
   @override
   String _result;
+
+  @override
+  void initState() {
+    super.initState();
+    String mbti_1 = widget.prefs.getString('mbti_1');
+    String mbti_2 = widget.prefs.getString('mbti_2');
+    if (mbti_1 != null && mbti_2 != null) {
+      _result = Mbtis.getResult(mbti_1, mbti_2);
+    }
+  }
 
   Widget build(BuildContext context) {
     String mbti_1 = widget.prefs.getString('mbti_1');

@@ -34,7 +34,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
 
   List<String> genderList = ["남성", "여성"];
   List<String> ageRangeList = [
-    for (var i = 2020; i > 1930; i -= 1) i.toString()
+    for (var i = 2014; i > 1930; i -= 1) i.toString()
   ];
 
   List<DropdownMenuItem<String>> dropdownListItem(List<String> itemList) {
@@ -127,14 +127,16 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xfffafafa),
-        elevation: 0,
-        title: Text(
-          "설정",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
+      appBar: widget.isLandingPage
+          ? null
+          : AppBar(
+              backgroundColor: Color(0xfffafafa),
+              elevation: 0,
+              title: Text(
+                "설정",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

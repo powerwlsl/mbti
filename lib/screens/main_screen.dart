@@ -15,7 +15,6 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
-// TODO share button
 // TODO add/fix celebrities suggestion button
 // TODO link preview image
 share(BuildContext context, String summary, String mbti) {
