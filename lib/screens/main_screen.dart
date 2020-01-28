@@ -221,17 +221,18 @@ class MbtiCustomScrollView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Icon(
-                        Icons.face,
-                        color: Colors.red,
+                      Image.asset(
+                        'images/${Mbtis.ExploreCategories.keys.toList()[index]}.png',
+                        width: 60,
                       ),
-                      Text(Mbtis.ExploreCategories[index],
-                          style: kPrimarySmallTextStyle)
+                      Text(Mbtis.ExploreCategories.values.toList()[index],
+                          style: kPrimarySmallTextStyle.copyWith(
+                              fontWeight: FontWeight.bold))
                     ],
                   ),
                 ),
               );
-            }, childCount: 9),
+            }, childCount: Mbtis.ExploreCategories.length),
           ),
         ),
         SliverToBoxAdapter(
