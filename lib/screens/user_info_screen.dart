@@ -128,10 +128,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:
+          widget.isLandingPage ? Color(0xffFAFAFA) : Color(0xffF1F3FC),
       appBar: widget.isLandingPage
           ? null
           : AppBar(
-              backgroundColor: Color(0xfffafafa),
+              backgroundColor: Color(0xffF1F3FC),
               elevation: 0,
               title: Text(
                 "설정",

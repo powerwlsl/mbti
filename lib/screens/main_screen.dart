@@ -267,13 +267,6 @@ class AvatarsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-              color: Colors.grey[200],
-              offset: Offset(4.0, 4.0),
-              blurRadius: 15.0,
-              spreadRadius: 1.0),
-        ],
       ),
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
@@ -281,10 +274,20 @@ class AvatarsWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 10, left: 10),
-              child: Text(
-                title,
-                style: kSecondaryTextStyle,
+              padding: const EdgeInsets.only(bottom: 10, left: 5),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                decoration: BoxDecoration(
+                    color: Color(0xffE1E6FC),
+                    borderRadius: BorderRadius.circular(50)),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    // color: Colors.white,
+                    fontSize: 10,
+                  ),
+                ),
               ),
             ),
           ),
@@ -299,27 +302,10 @@ class AvatarsWidget extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey[300],
-                                offset: Offset(4.0, 4.0),
-                                blurRadius: 15.0,
-                                spreadRadius: 1.0),
-                            BoxShadow(
-                                color: Colors.grey[100],
-                                offset: Offset(-4.0, -4.0),
-                                blurRadius: 15.0,
-                                spreadRadius: 1.0),
-                          ],
-                        ),
-                        child: CircleAvatar(
-                          radius: 20,
-                          backgroundImage: getImage(
-                              'images/avatars/${imageName}_${entry.key}.jpg'),
-                        ),
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundImage: getImage(
+                            'images/avatars/${imageName}_${entry.key}.jpg'),
                       ),
                       SizedBox(
                         height: 4,

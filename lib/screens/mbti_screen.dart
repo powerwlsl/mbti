@@ -31,8 +31,9 @@ class _MbtiScreenState extends State<MbtiScreen> {
   Widget build(BuildContext context) {
     Map mbti = Mbtis.Types[widget.type];
     return Scaffold(
+      backgroundColor: Color(0xffF1F3FC),
       appBar: AppBar(
-        backgroundColor: Color(0xfffafafa),
+        backgroundColor: Color(0xffF1F3FC),
         elevation: 0,
         title: Text(
           widget.type,

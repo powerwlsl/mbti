@@ -93,9 +93,11 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
     }
 
     return Scaffold(
+      backgroundColor: Color(0xffF1F3FC),
       drawer: AppDrawer(),
       appBar: AppBar(
-        backgroundColor: Color(0xfffafafa),
+        backgroundColor: Color(0xffF1F3FC),
+
         elevation: 0,
         // todo 궁합 아이콘 바꾸기
         title: Text(
