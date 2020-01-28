@@ -15,24 +15,28 @@ class _MbtiListScreenState extends State<MbtiListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffF1F3FC),
       drawer: AppDrawer(),
       appBar: AppBar(
-        backgroundColor: Color(0xfffafafa),
+        backgroundColor: Color(0xffF1F3FC),
         title: Text(
           "MBTI 유형",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         elevation: 0,
       ),
-      body: GridView.builder(
-        itemCount: Mbtis.Types.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
-          childAspectRatio: 0.8,
-          crossAxisSpacing: 0,
-          mainAxisSpacing: 0,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.builder(
+          itemCount: Mbtis.Types.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            childAspectRatio: 0.8,
+            crossAxisSpacing: 0,
+            mainAxisSpacing: 0,
+          ),
+          itemBuilder: (context, i) => MbtiGridListItem(i),
         ),
-        itemBuilder: (context, i) => MbtiGridListItem(i),
       ),
     );
   }
@@ -46,57 +50,66 @@ class MbtiGridListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final String type = Mbtis.Types.keys.toList()[index];
 
-    return FlatButton(
-      padding: EdgeInsets.all(5),
-      onPressed: () {
+    return GestureDetector(
+      onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => MbtiScreen(type)),
         );
       },
-      child: Card(
-        color: Colors.white,
-        margin: EdgeInsets.all(0),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 3),
-          margin: EdgeInsets.symmetric(vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Hero(
-                tag: type,
-                child: Image.asset(
-                  'images/${Mbtis.Types[type]["character"]}.png',
-                  height: 30,
+
+      //Todo inkwell
+      // TODO new icons
+      child: Container(
+        margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey[200],
+                offset: Offset(4.0, 4.0),
+                blurRadius: 15.0,
+                spreadRadius: 1.0),
+          ],
+        ),
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Hero(
+              tag: type,
+              child: Image.asset(
+                'images/${Mbtis.Types[type]["character"]}.png',
+                height: 25,
+                color: Color(Mbtis.Types[type]["color"]),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Center(
+              child: Text(
+                type,
+                style: TextStyle(
+                  fontSize: 18,
                   color: Color(Mbtis.Types[type]["color"]),
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
-                height: 5,
+            ),
+            SizedBox(
+              height: 3,
+            ),
+            Flexible(
+              child: Text(
+                Mbtis.Types[type]["character_ko"],
+                style: kSecondarySmallTextStyle.copyWith(fontSize: 10),
+                textAlign: TextAlign.center,
               ),
-              Center(
-                child: Text(
-                  type,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Color(Mbtis.Types[type]["color"]),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              Flexible(
-                child: Text(
-                  Mbtis.Types[type]["character_ko"],
-                  style: kSecondarySmallTextStyle.copyWith(fontSize: 10),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

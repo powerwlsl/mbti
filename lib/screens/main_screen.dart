@@ -182,11 +182,7 @@ class MbtiCustomScrollView extends StatelessWidget {
         SliverToBoxAdapter(
           child: AvatarsWidget(myMbti["celebrities_ko"], '${myMbtiType}', "국내"),
         ),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 10,
-          ),
-        ),
+
         SliverToBoxAdapter(
           child: AvatarsWidget(myMbti["celebrities"], '${myMbtiType}i', "해외"),
         ),

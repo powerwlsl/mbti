@@ -97,18 +97,20 @@ class _MbtiMatchingScreenState extends State<MbtiMatchingScreen> {
       appBar: AppBar(
         backgroundColor: Color(0xfffafafa),
         elevation: 0,
+        // todo 궁합 아이콘 바꾸기
         title: Text(
           "MBTI 궁합",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: <Widget>[
-          if (_result != null)
-            IconButton(
-              icon: Icon(Icons.share),
-              onPressed: () {
-                share(context, mbti_1, mbti_2, _result);
-              },
-            )
+          IconButton(
+            icon: Icon(Icons.share),
+            onPressed: _result == null
+                ? null
+                : () {
+                    share(context, mbti_1, mbti_2, _result);
+                  },
+          )
         ],
       ),
       body: Container(
