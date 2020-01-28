@@ -31,6 +31,7 @@ dependencies:
   fancy_bottom_navigation: ^0.3.2
   url_launcher: ^5.4.1
   device_info: ^0.4.1+4
+  font_awesome_flutter: ^8.5.0
 
 dev_dependencies:
   flutter_test:

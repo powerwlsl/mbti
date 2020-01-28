@@ -12,13 +12,10 @@ class ExpandTitleContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 3),
-      child: ListTile(
-        contentPadding: EdgeInsets.only(left: 0.0, right: 0.0),
-        title: Text(
-          title,
-          style: kPrimaryMediumTextStyle,
-        ),
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      child: Text(
+        title,
+        style: kPrimaryMediumTextStyle.copyWith(fontWeight: FontWeight.bold),
       ),
     );
   }

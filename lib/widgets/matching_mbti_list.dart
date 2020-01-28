@@ -25,7 +25,20 @@ class _MatchingMbtiListState extends State<MatchingMbtiList> {
           title: "궁합",
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey[200],
+                  offset: Offset(4.0, 4.0),
+                  blurRadius: 15.0,
+                  spreadRadius: 1.0),
+            ],
+          ),
+          padding: EdgeInsets.all(10),
+          // margin: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -50,26 +63,28 @@ class MatchingRateRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      height: 45,
       child: Row(
         children: <Widget>[
-          Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
-            Image.asset(
-              'images/$result.png',
-              width: 25,
-              color: Mbtis.EmojiColor[result],
-            ),
-            SizedBox(
-              width: 40,
-              child: Center(
-                child: Text(
-                  result.replaceAll('_', ' ').toUpperCase(),
-                  style: kSecondarySmallTextStyle.copyWith(
-                      fontSize: 8, color: Mbtis.EmojiColor[result]),
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset(
+                  'images/$result.png',
+                  width: 25,
+                  color: Mbtis.EmojiColor[result],
                 ),
-              ),
-            ),
-          ]),
+                SizedBox(
+                  width: 40,
+                  child: Center(
+                    child: Text(
+                      result.replaceAll('_', ' ').toUpperCase(),
+                      style: kSecondarySmallTextStyle.copyWith(
+                          fontSize: 8, color: Mbtis.EmojiColor[result]),
+                    ),
+                  ),
+                ),
+              ]),
           SizedBox(
             width: 10,
           ),
